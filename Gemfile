@@ -8,6 +8,7 @@ gem 'rails', '~> 5.2.3'
 gem 'pry-rails'
 gem 'annotate'
 gem 'bcrypt'
+gem 'faker'
 gem 'jquery-rails'
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
