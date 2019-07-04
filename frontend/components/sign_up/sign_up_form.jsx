@@ -1,4 +1,5 @@
 import React from 'react'
+import { Redirect} from 'react-router' 
 
 class SignUpForm extends React.Component {
     constructor(props) {
@@ -11,6 +12,9 @@ class SignUpForm extends React.Component {
     handleSubmit(e) {
         e.preventDefault(); 
         this.props.signup(this.state); 
+        this.setState({
+            logged_in: true 
+        })
     }
 
     handleUsername(e) {
@@ -32,9 +36,12 @@ class SignUpForm extends React.Component {
     }
 
     render() {
+        if (this.state.logged_in) {
+            return <Redirect to={`/users/${this.state.username}`} />
+        }
         return (
             <>
-            <h2>Sign Up Form</h2>
+            <h2>Sign Up</h2>
             <form onSubmit={this.handleSubmit}>
                 <label>Username:
                     <input type="text"
