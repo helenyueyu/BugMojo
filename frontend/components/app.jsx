@@ -5,15 +5,16 @@ import { Route, Switch } from 'react-router-dom';
 import SignUpFormContainer from './sign_up/sign_up_form_container'; 
 import SignInFormContainer from './sign_in/sign_in_form_container';
 import ProfileContainer from './profile/profile_container'; 
+import { AuthRoute, ProtectedRoute } from '../util/routeUtil'
 
 const App = () => (
     <>
-    <h1>Buggie Bug</h1>
+    <h1>Bug Mojo</h1>
     <Switch>
         <Route exact path="/" component={GreetingContainer} />
-        <Route exact path="/signup" component={SignUpFormContainer} />
-        <Route exact path="/login" component={SignInFormContainer} />
-        <Route exact path="/users/:userName" component={ProfileContainer} />
+        <AuthRoute exact path="/signup" component={SignUpFormContainer} />
+        <AuthRoute exact path="/login" component={SignInFormContainer} />
+        <ProtectedRoute exact path="/users/:userName" component={ProfileContainer} />
     </Switch>
     </>
 );
