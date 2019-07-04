@@ -3,7 +3,7 @@ import SignInForm from './sign_in_form';
 import { login } from '../../actions/sessionActions'; 
 
 const mapStateToProps = state => ({
-    currentUser: {username: '', email: '', password: '', logged_in: false}
+    currentUser: {username: '', email: '', password: ''}
 });
 
 const mapDispatchToProps = dispatch => ({

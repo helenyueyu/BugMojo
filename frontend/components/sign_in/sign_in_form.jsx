@@ -11,7 +11,8 @@ class SignInForm extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        this.props.login(this.state);
+        this.props.login(this.state)
+            .then(() => this.props.history.push(`/users/${this.state.username}`));
         this.setState({
             logged_in: true
         })
@@ -36,9 +37,6 @@ class SignInForm extends React.Component {
     }
 
     render() {
-        if (this.state.logged_in) {
-            return <Redirect to={`/users/${this.state.username}`} />
-        }
         return (
             <>
                 <h2>Sign In</h2>
