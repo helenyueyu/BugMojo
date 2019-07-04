@@ -1,0 +1,21 @@
+.footer {
+    position: absolute; 
+    width: 100%; 
+    background-color: #242729; 
+    padding: 1rem; 
+    flex-shrink: 0; 
+}
+
+a {
+    color: #bbc0c4; 
+    text-decoration: none; 
+    size: 0.5rem; 
+}
+
+.link {
+    float: right; 
+    padding-right: 2rem; 
+    font-family: arial; 
+    size: 0.5rem; 
+    line-height: 14px; 
+}

@@ -7,6 +7,8 @@ import NavBarContainer from './navbar/navbar_container';
 import SignUpFormContainer from './sign_up/sign_up_form_container'; 
 import SignInFormContainer from './sign_in/sign_in_form_container';
 import ProfileContainer from './profile/profile_container'; 
+import Footer from './footer/footer'; 
+
 import { AuthRoute, ProtectedRoute } from '../util/routeUtil'
 
 const App = () => (
@@ -18,6 +20,7 @@ const App = () => (
             <AuthRoute exact path="/login" component={SignInFormContainer} />
             <ProtectedRoute exact path="/users/:userName" component={ProfileContainer} />
         </Switch>
+        <Footer />
     </div>
 );
 
