@@ -3,7 +3,7 @@ import { RECEIVE_CURRENT_USER, LOGOUT_CURRENT_USER } from '../actions/sessionAct
 const usersReducer = (state={}, action) => {
     Object.freeze(state); 
 
-    const newState = Object.assign({}, state); 
+    let newState = Object.assign({}, state); 
 
     switch(action.type) {
         case RECEIVE_CURRENT_USER: 
