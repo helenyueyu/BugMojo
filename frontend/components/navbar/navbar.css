@@ -1,0 +1,84 @@
+.navbar {
+    background-color: #fafafb; 
+    position: fixed; 
+    display: flex;  
+    justify-content: space-around; 
+    z-index: 1; 
+    width: 100vw; 
+    padding: 0.8rem; 
+    border-top: 3px solid #f48024; 
+}
+
+.left_components > h1 {
+    display: inline-block;
+    font-family: Arial; 
+    transform: scale(.95, 1);  
+    font-size: 1.5rem; 
+    font-weight: 100; 
+    margin-left: 20px; 
+}
+
+.bold_title {
+    display: inline-block;
+    font-family: Arial; 
+    transform: scale(.95, 1);  
+    font-size: 1.5rem; 
+    font-weight: 100; 
+    font-weight: bold; 
+    margin-right: 25px; 
+}
+
+button {
+    display: inline-block; 
+}
+
+.button_sign_in {
+    background-color: transparent; 
+    padding: 0.6rem;  
+    text-decoration: none; 
+    border: none; 
+    color: #3d90b3; 
+}
+
+.button_sign_up {
+    background-color: #0094ff; 
+    padding: 0.5rem; 
+    text-decoration: none; 
+    border-radius: 5px; 
+    box-shadow: 1px 1px slategray; 
+    border: 1px solid #0174c6; 
+}
+
+.search_bar {
+    padding: 0.5rem; 
+    border-radius: 5px; 
+    border: none; 
+    border: 1px solid #0094ff; 
+    margin-left: 5px; 
+    margin-right: 5px; 
+    font-size: 1rem; 
+    color: lightgray; 
+    /* outline-color: lightskyblue;  */
+    /* outline-color: #0094ff;  */
+    /* outline-color: rgba(0,148,255,0.2);  */
+    /* outline-width: 10px; 
+    outline-offset: 2px;  */
+    width: 400px; 
+    padding-left: 40px; 
+}
+
+.search_bar:focus {
+    outline: none; 
+    box-shadow: 0 0 4pt 3pt rgb(186, 226, 250); 
+}
+
+.search_icon {
+    color: lightgray; 
+    position: absolute; 
+    transform: translate(15px, 5px); 
+    font-size: 1.5rem; 
+}
+
+.right_buttons {
+    
+}

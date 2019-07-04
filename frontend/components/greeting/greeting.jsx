@@ -1,12 +1,12 @@
 import React from 'react'; 
 import { Link } from 'react-router-dom'; 
+import Splash from './splash'; 
+
+import './greeting.css'
 
 const Greeting = ({currentUser, logout}) => (
     <div>
-        {currentUser && currentUser.username}
-        {currentUser && <button onClick={logout}>Logout</button>}
-        {!currentUser && <Link to="/signup">Sign Up</Link>}
-        {!currentUser && <Link to="/login">Sign In</Link>}
+        <Splash />
     </div>
 )
 
