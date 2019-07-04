@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const store = configureStore(); 
 
     // Testing purposes 
-    
+    window.store = store; 
     window.getState = store.getState; 
     window.dispatch = store.dispatch;
 
