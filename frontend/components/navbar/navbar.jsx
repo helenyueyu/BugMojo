@@ -10,7 +10,6 @@ class NavBar extends React.Component {
     }
 
     render() {
-        console.log(this.state)
         return (
             <nav className="navbar">
                 <div className="left_components">
