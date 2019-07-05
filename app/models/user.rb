@@ -50,11 +50,12 @@ class User < ApplicationRecord
         self.session_token ||= SecureRandom.urlsafe_base64
     end
 
+    # going to shorten this to 5 digits but it might be not unique for very large userbase
     def ensure_username
         if self.username != ""
             self.username 
         else
-            self.username = 'user'+(BCrypt::Password.create(self.email)).to_s
+            self.username = "user#{((self.email).hash).to_s[0,6]}"
         end
     end
 end

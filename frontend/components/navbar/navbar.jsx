@@ -10,6 +10,7 @@ class NavBar extends React.Component {
     }
 
     render() {
+        console.log(this.state)
         return (
             <nav className="navbar">
                 <div className="left_components">
@@ -24,21 +25,20 @@ class NavBar extends React.Component {
                         value="Search..."
                         onChange={(e) => console.log(e)}/>
                     
-                    {this.state && this.state.username}
-                    {this.state && <button onClick={this.props.logout}>Logout</button>}
+                    {this.props.currentUser ? this.props.currentUser.username : null}
+                    {this.props.currentUser ? <button onClick={this.props.logout}>Logout</button> : null}
                 </div>
                 
                 <div className="right_buttons">
-                {!this.state && <button className="button_sign_in">
+                {this.props.currentUser ? null : <button className="button_sign_in">
                     <Link to="/login" style={{
                         color: '#0174c6',
-                        // color: #256c98
                         textDecoration: 'none',
                         fontFamily: 'Arial',
                         fontSize: '1rem'
                     }}>Log in</Link>
                 </button>}
-                {!this.state && <button className="button_sign_up">
+                {this.props.currentUser ? null : <button className="button_sign_up">
                     <Link to="/signup" style={{
                         color: '#fafafb', 
                         textDecoration: 'none', 
