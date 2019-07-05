@@ -26,7 +26,7 @@ class NavBar extends React.Component {
                         onChange={(e) => console.log(e)}/>
                     
                     {this.props.currentUser ? this.props.currentUser.username : null}
-                    {this.props.currentUser ? <button onClick={this.props.logout}>Logout</button> : null}
+                    {this.props.currentUser ? <Link to="/" onClick={this.props.logout}>Logout </Link> : null}
                 </div>
                 
                 <div className="right_buttons">
