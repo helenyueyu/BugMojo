@@ -21,9 +21,10 @@ class User < ApplicationRecord
     after_initialize :ensure_session_token, :ensure_username  
 
 
-    def initialize(password, email, username = nil)
-        
-    end
+    # def initialize(password, email, username = nil)
+    #     @password = password 
+    #     @username = username ||= 'user'+BCrypt::Password.create(email)
+    # end
 
     def self.find_by_credentials(username, password)
         user = User.find_by(username: username) 
@@ -31,7 +32,7 @@ class User < ApplicationRecord
     end 
 
     def password=(password)
-        @password = password 
+        # @password = password 
         self.password_digest = BCrypt::Password.create(password)
     end 
 
@@ -49,7 +50,11 @@ class User < ApplicationRecord
         self.session_token ||= SecureRandom.urlsafe_base64
     end
 
-    def ensure_username 
-        self.username ||= 'user'+BCrypt::Password.create(self.email)
+    def ensure_username
+        if self.username != ""
+            self.username 
+        else
+            self.username = 'user'+(BCrypt::Password.create(self.email)).to_s
+        end
     end
 end
