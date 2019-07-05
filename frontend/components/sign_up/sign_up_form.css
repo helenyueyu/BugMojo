@@ -1,0 +1,95 @@
+body {
+    background-color: #eff0f1; 
+}
+.saying {
+    transform: translateY(120px);
+    width: 30%; 
+    margin: 0 auto; 
+    text-align: center; 
+    font-family: Arial, Helvetica, sans-serif; 
+    color: #242729; 
+    font-weight: 400; 
+    font-size: 21px; 
+    line-height: 27px; 
+}
+
+.sign_up_form {
+    transform: translateY(150px);
+    padding: 1.75rem; 
+    margin: 0 auto; 
+    border: 1px solid black; 
+    width: 21%; 
+    background-color: white; 
+    border-radius: 5px; 
+    border: none; 
+    font-family: Arial, Helvetica, sans-serif;
+    box-shadow: 0px 1px 20px rgb(206, 206, 206);  
+}
+
+.input_field {
+    padding: 0.5rem; 
+    padding-top: 0.55rem; 
+    padding-bottom: 0.55rem; 
+    margin-top: 0.3rem; 
+    display: block; 
+    width: 100%; 
+    border-radius: 3.5px; 
+    border: 1px solid rgb(187, 187, 187); 
+    font-size: 0.8rem; 
+    box-sizing: border-box; 
+}
+
+.input_field:focus {
+    /* outline: none;  */
+    outline: none; 
+    border: 1px solid #0094ff; 
+    box-shadow: 0 0 0pt 3pt rgb(207, 237, 255); 
+    /* outline-width: 15px; 
+    outline-color: #a8dbff;  */
+}
+
+.label {
+    font-weight: bold; 
+    font-size: 15px; 
+}
+
+.reminder {
+    font-size: 11px; 
+    color: slategray; 
+    margin-top: 0.4rem; 
+}
+
+.submit_button {
+    width: 100%; 
+    background-color: #0094ff; 
+    padding-top: 0.65rem; 
+    padding-bottom: 0.65rem; 
+    color: white; 
+    font-size: 0.8rem;
+    border: none; 
+    margin-top: 1rem;  
+    border-radius: 5px; 
+    border: 1px solid #007bd3; 
+}
+
+.login_reminder {
+    transform: translateY(190px);
+    text-align: center; 
+    font-family: Arial, Helvetica, sans-serif; 
+    font-size: 13px; 
+    margin-bottom: 2.5rem; 
+}
+
+.login_link {
+    color: #007bd3; 
+}
+
+.discretionary_policy {
+    margin-top: 2.0rem; 
+    font-size: 11px; 
+    color: slategray; 
+}
+
+.blue_terms {
+    color: #007bd3; 
+}

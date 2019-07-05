@@ -12,7 +12,7 @@ import Footer from './footer/footer';
 import { AuthRoute, ProtectedRoute } from '../util/routeUtil'
 
 const App = () => (
-    <div>
+    <div className="app">
         <NavBarContainer />
         <Switch>
             <Route exact path="/" component={GreetingContainer} />
@@ -20,7 +20,6 @@ const App = () => (
             <AuthRoute exact path="/login" component={SignInFormContainer} />
             <ProtectedRoute exact path="/users/:userName" component={ProfileContainer} />
         </Switch>
-        <Footer />
     </div>
 );
 

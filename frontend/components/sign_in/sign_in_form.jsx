@@ -1,10 +1,11 @@
 import React from 'react'
-import { Redirect } from 'react-router'
+import './sign_in_form.css'; 
+import { Link } from 'react-router-dom'; 
 
 class SignInForm extends React.Component {
     constructor(props) {
         super(props);
-        this.state = this.props.currentUser;
+        this.state = this.props.currentUser; 
 
         this.handleSubmit = this.handleSubmit.bind(this);
     }
@@ -38,31 +39,41 @@ class SignInForm extends React.Component {
 
     render() {
         return (
-            <>
-                <h2>Sign In</h2>
-                <form onSubmit={this.handleSubmit}>
-                    <label>Username:
-                    <input type="text"
-                            value={this.state.username}
-                            onChange={(e) => this.handleUsername(e)} />
-                    </label>
-                    <br />
-                    <label>Password:
-                    <input type="password"
-                            value={this.state.password}
-                            onChange={(e) => this.handlePassword(e)}
-                        />
-                    </label>
-                    <br />
-                    <label>Email:
-                    <input type="text"
-                            value={this.state.email}
-                            onChange={(e) => this.handleEmail(e)}
-                        />
-                    </label>
-                    <input type="submit" value="Sign In" />
-                </form>
-            </>
+            <div className="form_background">
+                <img width='20px' src={window.logo} alt="logo" className="login_image" />
+
+                <div className="sign_in_form">
+
+                    <form onSubmit={this.handleSubmit}>
+                        <label><span className="label">Display Name</span>
+                        <input type="text"
+                                value={this.state.username}
+                                onChange={(e) => this.handleUsername(e)} 
+                                className="input_field"
+                                />
+                        </label>
+                        <br />
+                        <label><span className="label">Email</span>
+                            <input type="text"
+                                value={this.state.email}
+                                onChange={(e) => this.handleEmail(e)}
+                                className="input_field"
+                            />
+                        </label>
+                        <br />
+                        <label><span className="label">Password</span><span className="blue_terms_2">Forgot password?</span>
+                        <input type="password"
+                                value={this.state.password}
+                                onChange={(e) => this.handlePassword(e)}
+                                className="input_field"
+                            />
+                        </label>
+                       
+                        <input className="submit_button" type="submit" value="Log in" />
+                    </form>
+                </div>
+                <div className="signup_reminder">Already have an account? <Link to="/signup" className="signup_link">Sign up</Link></div>
+            </div>
         )
     }
 }
