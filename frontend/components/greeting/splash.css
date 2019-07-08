@@ -67,6 +67,10 @@
     font-size: 15px; 
 }
 
+.demo:focus {
+    outline: none; 
+}
+
 
 .tagline {
     font-family: 'Roboto', sans-serif;

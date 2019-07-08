@@ -1,9 +1,10 @@
 body {
     background-color: #eff0f1; 
 }
+
 .saying {
-    transform: translateY(120px);
-    width: 30%; 
+    transform: translateY(80px);
+    width: 400px; 
     margin: 0 auto; 
     text-align: center; 
     font-family: Arial, Helvetica, sans-serif; 
@@ -13,9 +14,36 @@ body {
     line-height: 27px; 
 }
 
+.facebook_login_signup {
+    text-decoration: none; 
+    width: 19rem; 
+    transform: translateY(120px); 
+    text-align: center; 
+    margin: auto; 
+    display: block; 
+    margin-bottom: 1.5rem; 
+    box-shadow: 0px 1px 20px rgb(206, 206, 206); 
+    background-color: #375499; 
+    color: white; 
+    font-family: Arial, Helvetica, sans-serif; 
+    padding-top: 0.75rem; 
+    padding-bottom: 0.75rem; 
+    border-radius: 5px; 
+    font-size: 13.5px; 
+}
+
+.facebook_login_signup:hover {
+    cursor: pointer; 
+    background-color: #2a4585; 
+}
+
+.facebook_login_signup:focus {
+    outline: none; 
+}
+
 .sign_up_form {
-    transform: translateY(150px);
-    padding: 1.75rem; 
+    transform: translateY(115px);
+    padding: 1.65rem; 
     margin: 0 auto; 
     border: 1px solid black; 
     width: 15.5rem; 
@@ -35,7 +63,7 @@ body {
     width: 100%; 
     border-radius: 3.5px; 
     border: 1px solid rgb(187, 187, 187); 
-    font-size: 0.8rem; 
+    font-size: 0.75rem; 
     box-sizing: border-box; 
 }
 
@@ -72,13 +100,7 @@ body {
     border: 1px solid #007bd3; 
 }
 
-.login_reminder {
-    transform: translateY(190px);
-    text-align: center; 
-    font-family: Arial, Helvetica, sans-serif; 
-    font-size: 13px; 
-    margin-bottom: 2.5rem; 
-}
+
 
 .login_link {
     color: #007bd3; 
@@ -92,4 +114,37 @@ body {
 
 .blue_terms {
     color: #007bd3; 
+}
+
+.input_error_message_bullets {
+    color: #d50b1f; 
+    font-size: 0.75rem; 
+    margin-left: 0.5rem; 
+    padding-left: 0.5rem; 
+    margin-top: 1rem; 
+    margin-bottom: 1rem; 
+}
+
+.hidden_input_error_message_bullets {
+    display: none; 
+}
+
+.bullet {
+    margin-left: 0.4rem; 
+}
+
+.login_reminder {
+    transform: translateY(160px);
+    text-align: center; 
+    font-family: Arial, Helvetica, sans-serif; 
+    font-size: 13px; 
+    margin-bottom: 2.5rem; 
+}
+
+.homepage_reminder {
+    transform: translateY(135px);
+    text-align: center; 
+    font-family: Arial, Helvetica, sans-serif; 
+    font-size: 13px; 
+    margin-bottom: 3.5rem; 
 }

@@ -1,5 +1,6 @@
 import React from 'react'; 
 import './splash.css'; 
+import { Link } from 'react-router-dom'; 
 
 const Splash = () => (
     <div className="splash">
@@ -12,8 +13,8 @@ const Splash = () => (
             <h1>We <span className="three">&lt;3</span> people who code</h1>
             <p className="tagline">We build products that empower developers and connect them to solutions that enable productivity, growth, and discovery.</p>
             <div className="buttons">
-                <button className="create_account">Create An Account</button>
-                <button className="demo">Demo</button>
+                <button className="create_account"><Link to="/signup" style={{ color: '#f48024', textDecoration: 'none' }}>Create An Account</Link></button>
+                <button className="demo"><Link to="/login/demo" style={{ color: 'white', textDecoration: 'none' }}>Demo</Link></button>
             </div>
         </div>
 

@@ -3,17 +3,45 @@ body {
 }
 
 .login_image {
-    transform: translateY(140px);
+    transform: translateY(80px);
     text-align: center; 
     margin: auto; 
     display: block; 
-    width: 4%; 
+    width: 32px; 
+    height: 37px; 
     margin-bottom: 1.7rem; 
 }
 
+.facebook_login {
+    text-decoration: none; 
+    width: 19rem; 
+    transform: translateY(80px); 
+    text-align: center; 
+    margin: auto; 
+    display: block; 
+    margin-bottom: 1.5rem; 
+    box-shadow: 0px 1px 20px rgb(206, 206, 206); 
+    background-color: #375499; 
+    color: white; 
+    font-family: Arial, Helvetica, sans-serif; 
+    padding-top: 0.75rem; 
+    padding-bottom: 0.75rem; 
+    border-radius: 5px; 
+    font-size: 13.5px; 
+}
+
+.facebook_login:hover {
+    cursor: pointer; 
+    background-color: #2a4585; 
+}
+
+.facebook_login:focus {
+    outline: none; 
+}
+
 .sign_in_form {
-    transform: translateY(150px);
-    padding: 1.75rem; 
+    transform: translateY(80px);
+    padding: 1.65rem; 
     margin: 0 auto; 
     border: 1px solid black; 
     width: 15.5rem; 
@@ -33,7 +61,7 @@ body {
     width: 100%; 
     border-radius: 3.5px; 
     border: 1px solid rgb(187, 187, 187); 
-    font-size: 0.8rem; 
+    font-size: 0.75rem; 
     box-sizing: border-box; 
 }
 
@@ -77,6 +105,7 @@ body {
 
 .submit_button:hover {
     cursor: pointer; 
+    background-color: #0076cb; 
 }
 
 .submit_button:focus {
@@ -84,16 +113,20 @@ body {
     box-shadow: 0 0 0pt 3pt rgb(207, 237, 255); 
 }
 
-.signup_reminder {
-    transform: translateY(190px);
-    text-align: center; 
-    font-family: Arial, Helvetica, sans-serif; 
-    font-size: 13px; 
-    margin-bottom: 2.5rem; 
-}
-
 .signup_link {
     color: #007bd3; 
+}
+
+.signup_link:hover {
+    color: #49b3ff; 
+}
+
+.login_link {
+    color: #007bd3; 
+}
+
+.login_link:hover {
+    color: #49b3ff; 
 }
 
 .blue_terms_2 {
@@ -120,7 +153,24 @@ body {
 
 .input_error_message {
     color: #d50b1f; 
-    font-size: 0.8rem; 
+    font-size: 0.75rem; 
     margin-top: 0.25rem; 
     margin-left: 0.1rem; 
+}
+
+.signup_reminder {
+    transform: translateY(120px);
+    text-align: center; 
+    font-family: Arial, Helvetica, sans-serif; 
+    font-size: 13px; 
+    margin-bottom: 2.5rem; 
+}
+
+
+.homepage_reminder_signin {
+    transform: translateY(95px);
+    text-align: center; 
+    font-family: Arial, Helvetica, sans-serif; 
+    font-size: 13px; 
+    margin-bottom: 4rem; 
 }

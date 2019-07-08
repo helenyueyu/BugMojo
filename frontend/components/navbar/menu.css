@@ -1,0 +1,49 @@
+.dropdown {
+    position: absolute; 
+    top: 46.25px; 
+    left: 0px; 
+    width: 250px; 
+    background-color: white;
+    box-shadow: 0px 1px 20px rgb(177, 177, 177); 
+}
+
+.dropdown_hidden {
+    display: none; 
+}
+
+li {
+    list-style: none; 
+}
+
+.home_menu {
+    font-family: Arial; 
+    font-weight: bold; 
+    padding: 0.4rem; 
+    margin: 0.4rem; 
+    font-size: 0.9rem; 
+    background-color: rgb(244, 244, 244); 
+    border-right: 3px solid #f48024; 
+}
+
+.public_menu {
+    color: rgb(106, 115, 124); 
+    font-family: Arial; 
+    font-weight: 100; 
+    font-size: 0.75rem; 
+    margin-top: 1rem; 
+    margin-bottom: 0.7rem; 
+    margin-left: 1rem; 
+}
+
+.bug_mojo_option {
+    color: rgb(106, 115, 124); 
+    font-family: Arial; 
+    margin-left: 2rem; 
+    font-size: 0.85rem; 
+    margin-bottom: 2rem; 
+}
+
+.bug_mojo_option:hover {
+    color: rgb(76, 80, 83);
+    cursor: pointer; 
+}

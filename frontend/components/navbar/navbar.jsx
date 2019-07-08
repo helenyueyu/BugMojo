@@ -1,20 +1,43 @@
 import React from 'react'; 
 import { Link } from 'react-router-dom'; 
-import './navbar.css';
+import Menu from './menu'; 
 
-// asset_path()
+import './navbar.css';
+import './hamburgers.css'
+
+
 class NavBar extends React.Component {
     constructor(props) {
         super(props)
-        this.state = this.props.currentUser 
+        this.state = {
+            user: this.props.currentUser, 
+            menuOpen: false 
+        }
+    }
+
+    openMenu() {
+        this.setState({
+            menuOpen: !this.state.menuOpen 
+        })
     }
 
     render() {
         return (
             <nav className="navbar">
                 <div className="left_components">
-                    <img width='20px' src={window.logo} alt="logo" />
-                    <h1>bug</h1><span className="bold_title">mojo</span>
+                    
+                    <button className={this.state.menuOpen ? "hamburger hamburger--collapse is-active" : "hamburger hamburger--collapse"} 
+                                onClick={() => this.openMenu()}
+                                type="button">
+                        <span className="hamburger-box">
+                            <span className="hamburger-inner"></span>
+                        </span>
+                    </button>
+
+                    <Menu menuOpen={this.state.menuOpen}/>
+                    <Link to="/" style={{color: 'black', textDecoration: 'none'}} ><h1 className="hover_title">
+                        <img width='20px' style={{transform: 'translateX(-2.5px) translateY(2.5px)'}} src={window.logo} alt="logo" /><span className="raleway_title">bug</span><span className="bold_title">mojo</span>
+                    </h1></Link>
                     
                     <span className="search_icon"><i className="fas fa-search"></i></span>
 
@@ -24,27 +47,18 @@ class NavBar extends React.Component {
                         value="Search..."
                         onChange={(e) => console.log(e)}/>
                     
-                    {this.props.currentUser ? this.props.currentUser.username : null}
-                    {this.props.currentUser ? <Link to="/" onClick={this.props.logout}>Logout </Link> : null}
+                    <div className="username">{this.props.currentUser ? this.props.currentUser.username : null}</div>
+                    {this.props.currentUser ? <Link to="/" onClick={this.props.logout}><button className="logout_button">Logout</button></Link> : null}
+                    
                 </div>
                 
                 <div className="right_buttons">
-                {this.props.currentUser ? null : <button className="button_sign_in">
-                    <Link to="/login" style={{
-                        color: '#0174c6',
-                        textDecoration: 'none',
-                        fontFamily: 'Arial',
-                        fontSize: '1rem'
-                    }}>Log in</Link>
-                </button>}
-                {this.props.currentUser ? null : <button className="button_sign_up">
-                    <Link to="/signup" style={{
-                        color: '#fafafb', 
-                        textDecoration: 'none', 
-                        fontFamily: 'Arial', 
-                        fontSize: '1rem'
-                    }}>Sign up</Link>
-                </button>}
+                {this.props.currentUser ? null : 
+                    <Link to="/login"><button className="button_sign_in">Log in</button></Link>
+                }
+                {this.props.currentUser ? null : 
+                        <Link to="/signup" ><button className="button_sign_up">Sign up </button></Link>
+               }
                 </div>
             </nav>
         )

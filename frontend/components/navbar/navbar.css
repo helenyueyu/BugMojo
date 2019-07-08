@@ -1,7 +1,38 @@
+.username {
+    margin-left: 1rem; 
+    margin-right: 0.5rem; 
+    font-family: Arial, Helvetica, sans-serif; 
+    transform: translateY(20px); 
+}
+
+.logout_button {
+    padding: 0.6rem; 
+    padding-left: 1.2rem; 
+    padding-right: 1.2rem; 
+    font-family: 'Roboto', sans-serif;
+    background-color: #f48024; 
+    color: white; 
+    margin-left: 0.25rem; 
+    border: none; 
+    border-radius: 5px; 
+    font-size: 15px; 
+    transform: translateY(10px); 
+}
+
+.logout_button:hover {
+    background-color: #ee6b00;
+    cursor: pointer; 
+}
+
+.logout_button:focus {
+    outline: none; 
+}
+
 .navbar {
     background-color: #fafafb; 
     position: fixed; 
-    display: flex;  
+    display: flex; 
+    align-items: center;  
     justify-content: space-around; 
     z-index: 1; 
     height: 30px; 
@@ -9,6 +40,20 @@
     padding: 0.5rem; 
     border-top: 3px solid #f48024; 
     box-shadow: 0px 1px 5px lightgray; 
+}
+
+.hover_title {
+    margin-top: 10px; 
+    margin-left: 15px; 
+}
+.raleway_title {
+   font-family: 'Raleway', sans-serif; 
+   font-size: 1.4rem; 
+}
+
+.left_components {
+    flex-grow: 5; 
+    display: flex; 
 }
 
 .left_components > h1 {
@@ -39,45 +84,85 @@ button {
     padding: 0.6rem;  
     text-decoration: none; 
     border: none; 
-    color: #3d90b3; 
+    margin-right: 0.25rem; 
+    color: #0174c6; 
+    text-decoration: 'none'; 
+    font-family: Arial; 
+    font-size: 0.8rem; 
+}
+
+.button_sign_in:hover {
+    background-color: #dcebf4; 
+    border-radius: 5px; 
+    cursor: pointer; 
+}
+
+.button_sign_in:focus {
+    outline: none; 
+    cursor: pointer; 
 }
 
 .button_sign_up {
     background-color: #0094ff; 
-    padding: 0.5rem; 
-    text-decoration: none; 
+    padding-top: 0.5rem; 
+    padding-bottom: 0.5rem; 
+    color: white; 
+    border: none; 
     border-radius: 5px; 
-    box-shadow: 1px 1px slategray; 
-    border: 1px solid #0174c6; 
+    border: 1px solid #007bd3; 
+    outline: none; 
+    color: '#fafafb'; 
+    text-decoration: none; 
+    font-family: Arial; 
+    font-size: 0.8rem; 
 }
 
+.button_sign_up:hover {
+    background-color: #0076cb; 
+    border-radius: 5px; 
+    cursor: pointer; 
+}
+
+.button_sign_up:focus {
+    outline: none; 
+    cursor: pointer; 
+}
+
+
+
+
 .search_bar {
+    flex-grow: 2; 
     padding: 0.4rem; 
     border-radius: 5px; 
     border: none; 
-    border: 1px solid #0094ff; 
+    border:  1px solid rgb(189, 196, 202); 
     margin-left: 5px; 
     margin-right: 5px; 
     font-size: 1rem; 
     color: lightgray; 
-    width: 400px; 
     padding-left: 40px; 
-    transform: translateY(-5px)
+    height: 80%; 
+    margin-top: 12.5px; 
 }
 
 .search_bar:focus {
     outline: none; 
-    box-shadow: 0 0 4pt 3pt rgb(186, 226, 250); 
+    border: 1px solid #0094ff; 
+    box-shadow: 0 0 0pt 3pt rgb(207, 237, 255); 
 }
 
 .search_icon {
     color: lightgray; 
     position: absolute; 
-    transform: translate(15px, 5px); 
-    font-size: 1.5rem; 
+    transform: translate(245px, 18px); 
+    font-size: 1.3rem; 
     z-index: 3; 
 }
 
 .right_buttons {
-    
+    flex-direction: horizontal; 
+    align-items: center; 
+    margin-right: 1rem; 
+    margin-left: 1rem; 
 }

@@ -8,8 +8,11 @@ const mapStateToProps = state => ({
         email: '', 
         password: '', 
         emailError: '', 
-        passwordError: ''
-    }
+        passwordError: '', 
+        submittedOnce: false, 
+        bulletErrors: []  
+    }, 
+    errors: state.errors.session 
 }); 
 
 const mapDispatchToProps = dispatch => ({
