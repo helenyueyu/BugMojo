@@ -1,0 +1,36 @@
+.meta_outer {
+    flex: 2.25; 
+}
+.meta_content {
+    background-color: #f7f1d5; 
+    transform: translateY(55px); 
+    height: 80vh; 
+    margin: 1rem; 
+    margin-right: 1.5rem; 
+    border-radius: 5px; 
+    box-shadow: 0px 1px 5px lightgray; 
+    border: 1px solid #e9e3c7; 
+}
+
+.meta_group {
+    padding: 0.7rem; 
+    padding-left: 1rem; 
+    padding-bottom: 0.9rem; 
+    font-family: Arial, Helvetica, sans-serif; 
+    color: #68530c; 
+    background-color: #f0ead2; 
+    font-weight: bold; 
+    font-size: 0.7rem; 
+}
+
+.meta_blue_links {
+    font-family: Arial; 
+    font-size: 0.75rem; 
+    padding-left: 2rem; 
+    padding-right: 1rem; 
+    padding-top: 0.5rem; 
+    padding-bottom: 0.5rem; 
+    border: 1px solid #e9e3c7; 
+    color: #0076cb; 
+}
+

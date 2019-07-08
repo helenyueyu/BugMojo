@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import configureStore from './store/store'; 
 import Root from './components/root'; 
 import { login, logout, signup } from './actions/sessionActions';
-import { fetchAllQuestions } from './actions/questionActions'; 
+import { fetchAllQuestions, fetchQuestion } from './actions/questionActions'; 
 import './bug_mojo.css';
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -28,6 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Testing purposes 
     window.fetchAllQuestions = fetchAllQuestions; 
+    window.fetchQuestion = fetchQuestion; 
 
     window.store = store; 
     window.getState = store.getState; 

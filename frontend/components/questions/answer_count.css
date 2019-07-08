@@ -1,0 +1,26 @@
+.answer_count_box {
+    display: flex; 
+    flex-direction: column;  
+    border: 1px solid #7fc998; 
+    padding: 0.5rem; 
+    border-radius: 5px; 
+    text-align: center; 
+    color: #4ca76a; 
+    width: 43.5px; 
+}
+
+.answer_count_box_none {
+    display: flex; 
+    flex-direction: column;  
+    padding: 0.5rem; 
+    border-radius: 5px; 
+    text-align: center; 
+    margin-left: 0.25rem; 
+    margin-right: 0.25rem; 
+    color: gray; 
+}
+
+.answer_count_phrase {
+    font-size: 0.7rem; 
+    padding-top: 0.4rem; 
+}

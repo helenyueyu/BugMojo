@@ -1,0 +1,22 @@
+.question_page {
+    display: flex; 
+    flex-direction: row; 
+    background-color:white; 
+}
+.questions_header_2 {
+    display: flex; 
+    flex-direction: row; 
+    justify-content: space-between; 
+}
+
+.question_page_title_2 {
+    font-size: 1.5rem; 
+    flex: 5; 
+    font-family: Arial, Helvetica, sans-serif; 
+    transform: translateY(40px); 
+    padding: 1rem; 
+}
+
+.ask_question_button_2 {
+    flex: 1; 
+}

@@ -64,6 +64,12 @@ User.create!({
     password: 'harold44'
 })
 
+User.create!({
+    username: 'soph', 
+    email: 'soph@opentable.net', 
+    password: 'soph9944'
+})
+
 
 
 

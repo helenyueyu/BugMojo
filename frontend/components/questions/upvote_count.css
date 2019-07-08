@@ -1,0 +1,15 @@
+.vote_count_box {
+    display: flex; 
+    flex-direction: column;  
+    padding: 0.5rem; 
+    border-radius: 5px; 
+    text-align: center;  
+    color: gray; 
+    width: 43.5px; 
+}
+
+
+.vote_count_phrase {
+    font-size: 0.7rem; 
+    padding-top: 0.4rem; 
+}

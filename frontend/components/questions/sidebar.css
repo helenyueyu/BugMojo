@@ -1,0 +1,41 @@
+.sidebar_main {
+    width: 160px; 
+    height: 100vh; 
+    background-color: white; 
+    border-right: 1px solid rgb(208, 208, 208); 
+}
+
+.home_menu_sidebar {
+    transform: translateY(75px); 
+    font-family: Arial; 
+    font-weight: bold; 
+    padding: 0.4rem; 
+    font-size: 0.9rem; 
+    background-color: rgb(244, 244, 244); 
+    border-right: 3px solid #f48024; 
+}
+
+.public_menu_sidebar {
+    transform: translateY(75px); 
+    color: rgb(106, 115, 124); 
+    font-family: Arial; 
+    font-weight: 100; 
+    font-size: 0.75rem; 
+    margin-top: 1rem; 
+    margin-bottom: 0.7rem; 
+    margin-left: 0.5rem; 
+}
+
+.bug_mojo_option_sidebar {
+    transform: translateY(75px); 
+    color: rgb(106, 115, 124); 
+    font-family: Arial; 
+    margin-left: 0.75rem; 
+    font-size: 0.85rem; 
+    margin-bottom: 2rem; 
+}
+
+.bug_mojo_option_sidebar:hover {
+    color: rgb(76, 80, 83);
+    cursor: pointer; 
+}
