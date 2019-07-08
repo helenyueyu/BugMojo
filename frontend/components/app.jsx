@@ -4,6 +4,8 @@ import Splash from './greeting/splash';
 import { Route, Switch } from 'react-router-dom'; 
 
 import NavBarContainer from './navbar/navbar_container'; 
+import QuestionsContainer from './questions/questions_container'; 
+
 import SignUpFormContainer from './sign_up/sign_up_form_container'; 
 import SignInFormContainer from './sign_in/sign_in_form_container';
 import SignInFormContainerDemo from './sign_in/sign_in_form_container_demo';
@@ -16,6 +18,8 @@ const App = () => (
         <NavBarContainer />
         <Switch>
             <Route exact path="/" component={Splash} />
+            <Route exact path="/questions" component={QuestionsContainer} />
+
             <AuthRoute exact path="/signup" component={SignUpFormContainer} />
             <AuthRoute exact path="/login" component={SignInFormContainer} />
             <AuthRoute exact path="/login/demo" component={SignInFormContainerDemo} />

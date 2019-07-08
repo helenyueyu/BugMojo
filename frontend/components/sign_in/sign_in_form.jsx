@@ -113,7 +113,7 @@ class SignInForm extends React.Component {
         })
 
         this.props.login(this.state)
-            .then(() => this.props.history.push(`/users/${this.state.username}`))
+            .then(() => this.props.history.push(`/questions`))
             .fail(() => this.handleErrors())
     }
 

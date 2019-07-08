@@ -14,55 +14,6 @@
 # run \dt to view the databases (users should pop up)
 # run SELECT * FROM users; 
 
-require 'faker'
-
-User.delete_all 
-
-# This will be the user for the demo login 
-User.create!({
-    username: 'guest',
-    email: 'guest@email.com', 
-    password: 'password'
-})
-
-# Will prepopulate 
-User.create!({
-    username: 'frank_the_tank', 
-    email: 'frank@turo.com', 
-    password: 'the_shoe_guy'
-})
-
-User.create!({
-    username: 'phil_nye', 
-    email: 'phil@spotify.net', 
-    password: 'PrincePhillip'
-})
-
-User.create!({
-    username: 'benjy', 
-    email: 'ben@zoho.io', 
-    password: 'slytherin'
-})
-
-User.create!({
-    username: 'aditya', 
-    email: 'aditya@steam.edu', 
-    password: 'secret_gryffindor'
-})
-
-User.create!({
-    username: 'percy', 
-    email: 'percy@medium.com', 
-    password: 'password'
-})
-
-User.create!({
-    username: 'elliot_the_wise', 
-    email: 'elliot@aa.io', 
-    password: 'harold'
-})
-
-
 # Might use faker later on to populate more users 
 
 # User.create!({
@@ -70,3 +21,67 @@ User.create!({
 #     password: FAker::Internet.password(6, 15), 
 #     email: Faker::Internet.email
 # })
+
+require 'faker'
+
+User.delete_all 
+Question.delete_all
+
+# This will be the user for the demo login 
+User.create!({
+    username: 'guest',
+    email: 'hello@bugmojo.com', 
+    password: 'bugmojo7'
+})
+
+User.create!({
+    username: 'frank_the_tank', 
+    email: 'frank@turo.com', 
+    password: '9theshoeguy'
+})
+
+User.create!({
+    username: 'phil_nye', 
+    email: 'phil@spotify.net', 
+    password: 'PrincePhillip2'
+})
+
+User.create!({
+    username: 'benjy', 
+    email: 'ben@zoho.io', 
+    password: 'slytherin4Lyfe'
+})
+
+User.create!({
+    username: 'aditya', 
+    email: 'aditya@steam.edu', 
+    password: 'secretGryffindor1'
+})
+
+User.create!({
+    username: 'elliot_the_wise', 
+    email: 'elliot@aa.io', 
+    password: 'harold44'
+})
+
+
+
+
+
+Question.create!({
+    title: 'How do I delete a Git branch?', 
+    body: 'What should I do differently to successfully delete the remotes/origin/bugfix branch both locally and remotely?', 
+    author_id: 35
+})
+
+Question.create!({
+    title: 'How do I undo the most recent local commits in Git?', 
+    body: "I accidentally committed the wrong files to Git, but I haven't pushed the commit to the server  yet. How can I undo those commits from the local repository?", 
+    author_id: 36
+})
+
+Question.create!({
+    title: "What is the difference between 'git pull' and 'git fetch'?", 
+    body: "What are the differences between git pull and git fetch?", 
+    author_id: 36
+})

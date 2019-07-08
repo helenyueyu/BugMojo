@@ -118,7 +118,7 @@ class SignUpForm extends React.Component {
         })
 
         this.props.signup(this.state)
-            .then(() => this.props.history.push(`/users/${this.state.username}`))
+            .then(() => this.props.history.push(`/questions`))
             .fail(() => this.handleErrors())
     }
 
