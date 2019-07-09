@@ -5,8 +5,8 @@ import { login } from '../../actions/sessionActions';
 const mapStateToProps = state => ({
     currentUser: {
         username: 'guest',
-        email: 'guest@email.com',
-        password: 'password',
+        email: 'hello@bugmojo.com',
+        password: 'bugmojo7',
         emailError: '',
         passwordError: ''
     }
