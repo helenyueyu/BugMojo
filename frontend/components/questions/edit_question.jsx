@@ -1,21 +1,16 @@
-import React from 'react'; 
-import './new_question.css'; 
+import React from 'react';
+import './edit_question.css';
 
-class NewQuestion extends React.Component {
+class EditQuestion extends React.Component {
     constructor(props) {
-        super(props); 
-        this.state = {
-            title: '', 
-            body: '', 
-            author_id: this.props.userId
-        }
-
-        this.handleSubmit = this.handleSubmit.bind(this); 
+        super(props);
+        this.state = this.props.question; 
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     handleSubmit(e) {
-        e.preventDefault(); 
-        this.props.createQuestion(this.state)
+        e.preventDefault();
+        this.props.updateQuestion(this.state)
             .then(() => this.props.history.push(`/questions`))
     }
 
@@ -27,7 +22,7 @@ class NewQuestion extends React.Component {
 
     handleBody(e) {
         this.setState({
-            body: e.target.value 
+            body: e.target.value
         })
     }
 
@@ -45,11 +40,11 @@ class NewQuestion extends React.Component {
                     <textarea value={this.state.body}
                         onChange={(e) => this.handleBody(e)} />
 
-                    <input type="submit" value="Create Question" />
+                    <input type="submit" value="Update Question" />
                 </form>
             </div>
         )
     }
 }
 
-export default NewQuestion; 
+export default EditQuestion; 

@@ -2,6 +2,7 @@ import React from 'react';
 import Sidebar from './sidebar'; 
 import Meta from './meta'; 
 import Vote from './vote'; 
+import { Link } from 'react-router-dom'; 
 
 import './question.css'; 
 
@@ -35,7 +36,16 @@ class Question extends React.Component {
                         <Vote votes={Math.floor(Math.random()*100)}/>
 
 
-                        <div className="question_body">{this.props.question && this.props.question.body}</div>
+                        <div className="question_body">
+                            <div>
+                                {this.props.question && this.props.question.body}
+                            </div>
+                            <div style={{display: 'block'}}>
+                                <Link to={`/questions/${this.props.match.params.questionId}/edit`}>edit</Link>
+                            </div>
+                        </div>
+
+
                         <div className="question_side_content">
                             <div className="asked_viewed_active">
                                 <div>

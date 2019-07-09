@@ -14,23 +14,23 @@ class Questions extends React.Component {
     constructor(props) {
         super(props); 
         this.search = this.search.bind(this); 
-        this.state = {
-            randoms: [
-                ['git', 'git-branch', 'git-remote'], 
-                ['git', 'version-control', 'git-commit', 'undo'], 
-                ['git', 'git-pull', 'git-fetch'], 
-                ['html', 'css', 'css3', 'flexbox'], 
-                ['jquery', 'javascript', 'dom', 'visibility'], 
-                ['json', 'comments'], 
-                ['git', 'git-branch', 'git-merge'], 
-                ['python', 'shell', 'command', 'subprocess', 'external'], 
-                ['javascript', 'scope', 'ecmascript-6', 'var', 'let'], 
-                ['javascript', 'guid', 'uid'], 
-                ['python', 'sorting', 'dictionary'], 
-                ['git', 'git-submodules'], 
-                ['search', 'logging', 'grep', 'command-line-interface']
-            ]
-        }
+        // this.state = {
+        //     randoms: [
+        //         ['git', 'git-branch', 'git-remote'], 
+        //         ['git', 'version-control', 'git-commit', 'undo'], 
+        //         ['git', 'git-pull', 'git-fetch'], 
+        //         ['html', 'css', 'css3', 'flexbox'], 
+        //         ['jquery', 'javascript', 'dom', 'visibility'], 
+        //         ['json', 'comments'], 
+        //         ['git', 'git-branch', 'git-merge'], 
+        //         ['python', 'shell', 'command', 'subprocess', 'external'], 
+        //         ['javascript', 'scope', 'ecmascript-6', 'var', 'let'], 
+        //         ['javascript', 'guid', 'uid'], 
+        //         ['python', 'sorting', 'dictionary'], 
+        //         ['git', 'git-submodules'], 
+        //         ['search', 'logging', 'grep', 'command-line-interface']
+        //     ]
+        // }
     }
     componentDidMount() {
         this.props.fetchAllQuestions()

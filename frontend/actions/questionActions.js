@@ -20,6 +20,11 @@ export const createQuestion = question => dispatch => (
         .then(question => dispatch(receiveQuestion(question)))
 )
 
+export const updateQuestion = question => dispatch => (
+    questionAPIUtil.updateQuestion(question)
+        .then(question => dispatch(receiveQuestion(question)))
+)
+
 export const fetchAllUsers = () => dispatch => (
     questionAPIUtil.getUsers()
         .then(users => dispatch(receiveAllUsers(users)))

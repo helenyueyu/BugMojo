@@ -8,8 +8,16 @@ class Api::QuestionsController < ApplicationController
         if @question.save 
             render :show 
         else
-            p @question.errors.full_messages 
             render json: @question.errors.full_messages, status: 422
+        end
+    end
+
+    def update 
+        @question = Question.find(params[:id])
+        if @question.update_attributes(question_params)
+            render :show 
+        else
+            render json: @question.errors.full_messages, status: 422 
         end
     end
 
