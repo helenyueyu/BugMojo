@@ -36,7 +36,7 @@ class Question extends React.Component {
 
 
                         <div className="question_body">{this.props.question && this.props.question.body}</div>
-                        <div>
+                        <div className="question_side_content">
                             <div className="asked_viewed_active">
                                 <div>
                                     <ul className="asked_viewed_active_gray">

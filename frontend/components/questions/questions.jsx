@@ -18,7 +18,17 @@ class Questions extends React.Component {
             randoms: [
                 ['git', 'git-branch', 'git-remote'], 
                 ['git', 'version-control', 'git-commit', 'undo'], 
-                ['git', 'git-pull', 'git-fetch']
+                ['git', 'git-pull', 'git-fetch'], 
+                ['html', 'css', 'css3', 'flexbox'], 
+                ['jquery', 'javascript', 'dom', 'visibility'], 
+                ['json', 'comments'], 
+                ['git', 'git-branch', 'git-merge'], 
+                ['python', 'shell', 'command', 'subprocess', 'external'], 
+                ['javascript', 'scope', 'ecmascript-6', 'var', 'let'], 
+                ['javascript', 'guid', 'uid'], 
+                ['python', 'sorting', 'dictionary'], 
+                ['git', 'git-submodules'], 
+                ['search', 'logging', 'grep', 'command-line-interface']
             ]
         }
     }
@@ -36,7 +46,7 @@ class Questions extends React.Component {
     }
 
     render() {
-        console.log(this.search(35, this.props.users))
+        // console.log(this.search(35, this.props.users))
         return (
             <div className="questions_page">
                 <Sidebar />
@@ -61,7 +71,7 @@ class Questions extends React.Component {
                                     </div>
                                     <div className="middle_info">
                                         {this.state.randoms[idx].map(random => 
-                                            <span className="tag">{random}</span>
+                                            <span key={Math.random()} className="tag">{random}</span>
                                         )}
                                     </div>
                                     <div className="bottom_info">
