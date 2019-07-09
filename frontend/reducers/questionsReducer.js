@@ -1,4 +1,4 @@
-import { RECEIVE_ALL_QUESTIONS, RECEIVE_QUESTION } from '../actions/questionActions'; 
+import { RECEIVE_ALL_QUESTIONS, RECEIVE_QUESTION, REMOVE_QUESTION } from '../actions/questionActions'; 
 
 const questionsReducer = (state={}, action) => {
     Object.freeze(state); 
@@ -10,6 +10,9 @@ const questionsReducer = (state={}, action) => {
             return action.questions;
         case RECEIVE_QUESTION: 
             newState[action.question.id] = action.question; 
+            return newState; 
+        case REMOVE_QUESTION: 
+            delete newState[action.question.id];
             return newState; 
         default: 
             return state; 

@@ -18,7 +18,8 @@ class Question extends React.Component {
     }
 
     render() {
-        // console.log(this.props.question)
+        console.log(this.props.question && this.props.question.authorId)
+        console.log(this.props.userId)
         return (
             <div className="question_page">
                 <Sidebar/>
@@ -41,7 +42,14 @@ class Question extends React.Component {
                                 {this.props.question && this.props.question.body}
                             </div>
                             <div style={{display: 'block'}}>
-                                <Link to={`/questions/${this.props.match.params.questionId}/edit`}>edit</Link>
+                                {
+                                    this.props.question && this.props.userId === this.props.question.authorId && 
+                                    <Link to={`/questions/${this.props.match.params.questionId}/edit`}>edit</Link>
+                                }
+                                {
+                                    this.props.question && this.props.userId === this.props.question.authorId && 
+                                    <button onClick={() => this.props.deleteQuestion(this.props.question)}>Delete</button>
+                                }
                             </div>
                         </div>
 
