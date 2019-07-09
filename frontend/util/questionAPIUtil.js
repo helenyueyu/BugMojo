@@ -19,3 +19,11 @@ export const getQuestion = id => (
     })
 )
 
+export const createQuestion = question => (
+    $.ajax({
+        method: 'POST', 
+        url: '/api/questions', 
+        data: { question }
+    })
+)
+

@@ -58,15 +58,6 @@ class Question extends React.Component {
                         
                     </div>
                 </div>
-                {/* <div className="overall_div">
-                    <div className="question_header_2">
-                        <div className="question_page_title_2">{this.props.question && this.props.question.title}</div>
-                        <button className="ask_question_button_2">Ask Question</button>
-                    </div>
-                    <div>
-                    </div>
-                </div> */}
-                {/* */}
             </div>
         )
     }

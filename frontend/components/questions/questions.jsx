@@ -46,7 +46,6 @@ class Questions extends React.Component {
     }
 
     render() {
-        // console.log(this.search(35, this.props.users))
         return (
             <div className="questions_page">
                 <Sidebar />
@@ -54,7 +53,8 @@ class Questions extends React.Component {
 
                 <div className="questions_right_side">
                     <div className="questions_header">
-                        <h1 className="questions_title">Top Questions</h1><button className="ask_question_button">Ask Question</button>
+                        <h1 className="questions_title">Top Questions</h1>
+                        <Link to="/questions/new"><button className="ask_question_button">Ask Question</button></Link>
                     </div>
 
                     <div className="questions_list">
@@ -70,9 +70,9 @@ class Questions extends React.Component {
                                         {question.title}
                                     </div>
                                     <div className="middle_info">
-                                        {this.state.randoms[idx].map(random => 
+                                        {/* {this.state.randoms[idx].map(random => 
                                             <span key={Math.random()} className="tag">{random}</span>
-                                        )}
+                                        )} */}
                                     </div>
                                     <div className="bottom_info">
                                         asked {moment(question.createdAt).fromNow()}

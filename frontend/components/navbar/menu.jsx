@@ -43,7 +43,9 @@ class Menu extends React.Component {
                     <Link to="/" style={{color: 'black', textDecoration: 'none'}}><li className="home_menu">Home</li></Link>
                     <li className="public_menu">PUBLIC</li>
                     <ul>
-                        <li className="bug_mojo_option"><i className="fas fa-globe-americas" style={{ marginRight: '0.5rem', color: 'gray', fontSize: '1rem' }}></i>Bug Mojo</li>
+                        <Link to="/questions" style={{textDecoration: 'none'}}>
+                            <li className="bug_mojo_option"><i className="fas fa-globe-americas" style={{ marginRight: '0.5rem', color: 'gray', fontSize: '1rem' }}></i>Bug Mojo</li>
+                        </Link>
                     </ul>
                 </ul>
             </div>

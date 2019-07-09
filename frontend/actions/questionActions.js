@@ -4,6 +4,7 @@ export const RECEIVE_ALL_QUESTIONS = 'FETCH_ALL_QUESTIONS';
 export const RECEIVE_QUESTION = 'RECEIVE_QUESTION'; 
 export const RECEIVE_ALL_USERS = 'RECEIVE_ALL_USERS'; 
 
+
 export const fetchAllQuestions = () => dispatch => (
     questionAPIUtil.getDefaultQuestions()
         .then(questions => dispatch(receiveAllQuestions(questions)))
@@ -11,6 +12,11 @@ export const fetchAllQuestions = () => dispatch => (
 
 export const fetchQuestion = id => dispatch => (
     questionAPIUtil.getQuestion(id)
+        .then(question => dispatch(receiveQuestion(question)))
+)
+
+export const createQuestion = question => dispatch => (
+    questionAPIUtil.createQuestion(question)
         .then(question => dispatch(receiveQuestion(question)))
 )
 
