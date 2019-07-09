@@ -1,10 +1,13 @@
+
 .question_page {
     display: flex; 
     flex-direction: row; 
     background-color:white; 
+    height: 140vh; 
 }
 .overall_div {
-    width: 85.5%;  
+    width: 82%;  
+    transform: translateX(150px); 
 }
 
 .question_title {

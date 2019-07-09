@@ -1,10 +1,12 @@
 .meta_outer {
-    flex: 2.25; 
+    flex-grow: 0; 
+    flex-shrink: 0; 
+    flex-basis: 19rem; 
 }
 .meta_content {
     background-color: #f7f1d5; 
     transform: translateY(55px); 
-    height: 80vh; 
+    height: 65vh; 
     margin: 1rem; 
     margin-right: 1.5rem; 
     border-radius: 5px; 
