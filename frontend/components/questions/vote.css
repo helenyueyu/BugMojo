@@ -1,0 +1,23 @@
+.vote_aditya {
+    margin-left: 1.5rem; 
+    font-size: 1.7rem; 
+    padding: 0.5rem; 
+    font-family: Arial, Helvetica, sans-serif; 
+    color: gray; 
+    display: flex; 
+    flex-direction: column; 
+    transform: translateY(-20px); 
+    text-align: center; 
+}
+
+.vote_aditya_up {
+    font-size: 2.8rem; 
+    color: rgb(189, 189, 189);
+    transform: scale(1.4, 1); 
+}
+
+.vote_aditya_down {
+    color: rgb(189, 189, 189);
+    font-size: 2.8rem; 
+    transform: scale(1.4, 1); 
+}
