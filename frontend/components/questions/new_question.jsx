@@ -79,6 +79,13 @@ class NewQuestion extends React.Component {
         })
     }
 
+    handleBody(e) {
+        this.setState({
+            body: e.target.value, 
+            bodyError: this.state.body.length === 0 ? 'Body cannot be blank.' : '' 
+        })
+    }
+
     handleBody1(e) {
         this.setState({
             body1: e.target.value, 
@@ -180,6 +187,12 @@ class NewQuestion extends React.Component {
     handleText4(e) {
         this.setState({
             text4: !this.state.text4
+        })
+    }
+
+    handleBoldText(e) {
+        this.setState({
+            body: this.state.body + "**strong text**"
         })
     }
 
@@ -499,7 +512,8 @@ class NewQuestion extends React.Component {
                             <div className="carousel_question_title">Title</div>
                             <input type="text"
                                 className="review_title title_input input_field_error"
-                                placeholder={this.state.title} />
+                                value={this.state.title} 
+                                onChange={(e) => this.handleTitle(e)}/>
 
                             <div className="inline_errors">
                                 <div className="input_error_message">{this.state.titleError}</div>
@@ -511,7 +525,8 @@ class NewQuestion extends React.Component {
                                 <div className="carousel_question_title">Title</div>
                                 <input type="text"
                                     className="review_title title_input"
-                                    placeholder={this.state.title} />
+                                    value={this.state.title} 
+                                    onChange={(e) => this.handleTitle(e)}/>
 
                
                         </label>}
@@ -520,7 +535,10 @@ class NewQuestion extends React.Component {
 
 
                             <span className="group_1">
-                                <span className="review_icon"><i className="fas fa-bold"></i></span>
+                                <span className="review_icon" 
+                                        onClick={(e) => this.handleBoldText(e)}>
+                                        <i className="fas fa-bold"></i>
+                                </span>
                                 <span className="review_icon"><i className="fas fa-italic"></i></span>
                             </span>
                                 
@@ -561,7 +579,9 @@ class NewQuestion extends React.Component {
                         <>
                                     <textarea className="confirmed_textbox input_field_error"
                                         value={this.state.body}
+                                        onChange={(e) => this.handleBody(e)}
                                         spellCheck="value" />
+
                                     <div className="inline_errors">
                                         <div className="input_error_message">{this.state.bodyError}</div>
                                         <i className="fas fa-exclamation-circle error_icon"></i>
@@ -570,10 +590,30 @@ class NewQuestion extends React.Component {
                         : 
                         <textarea className="confirmed_textbox"
                         value={this.state.body}
+                        onChange={(e) => this.handleBody(e)}
                         spellCheck="value"/>}
 
+                            <hr style={{
+                                
+                                borderTop:"dotted 1px rgb(189, 196, 202)", 
+                                backgroundColor: 'transparent', 
+                                borderLeft: 'none', 
+                                borderRight: 'none', 
+                                borderBottom: 'none'}} />
 
-                        {this.state.body}
+                            <div className="markdown_formatted_answer">
+                                {this.state.body}
+                            </div>
+                        
+
+                            <hr style={{
+                                marginTop: '2rem', 
+                                borderTop: "dotted 1px rgb(189, 196, 202)",
+                                backgroundColor: 'transparent',
+                                borderLeft: 'none',
+                                borderRight: 'none',
+                                borderBottom: 'none'
+                            }} />
                      
                            <div className="prev_next_buttons">
                                 <input className="next_button" type="submit" value="Post Your Question" />
