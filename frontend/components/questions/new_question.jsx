@@ -7,6 +7,10 @@ class NewQuestion extends React.Component {
         this.state = {
             title: '', 
             body: '', 
+            body1: '', 
+            body2: '', 
+            body3: '', 
+            body4: '', 
             author_id: this.props.userId, 
             displayTitle: true, 
             displayDescription: false, 
@@ -36,9 +40,31 @@ class NewQuestion extends React.Component {
         })
     }
 
-    handleBody(e) {
+    handleBody1(e) {
         this.setState({
-            body: e.target.value 
+            body1: e.target.value, 
+            body: this.state.body1 + this.state.body2 + this.state.body3 + this.state.body4 
+        })
+    }
+
+    handleBody2(e) {
+        this.setState({
+            body2: e.target.value,
+            body: this.state.body1 + this.state.body2 + this.state.body3 + this.state.body4
+        })
+    }
+
+    handleBody3(e) {
+        this.setState({
+            body3: e.target.value,
+            body: this.state.body1 + this.state.body2 + this.state.body3 + this.state.body4
+        })
+    }
+
+    handleBody4(e) {
+        this.setState({
+            body4: e.target.value,
+            body: this.state.body1 + this.state.body2 + this.state.body3 + this.state.body4
         })
     }
 
@@ -166,6 +192,7 @@ class NewQuestion extends React.Component {
                                     onChange={(e) => this.handleTitle(e)} />
                             </label>
 
+
                             <button className="next_button"
                                 onClick={(e) => this.displayDescription(e)}>
                                     Next
@@ -189,6 +216,15 @@ class NewQuestion extends React.Component {
                                 
 
                                 <div className="guided_mode">Guided Mode</div>
+                                <div className="guided_mode_helpers">
+                                    <span className="guided_dropdown_link">Links</span>
+                                    <span className="guided_dropdown_link">Images</span>
+                                    <span className="guided_dropdown_link">Styling/Headers</span>
+                                    <span className="guided_dropdown_link">Lists</span>
+                                    <span className="guided_dropdown_link">Blockquotes</span>
+                                    <span className="guided_dropdown_link">Code</span>
+                                    <span className="guided_dropdown_link">HTML</span>
+                                </div>
                                 <div className={this.state.text1 ? "big_div2" : "big_div"}>
                                 <div className="dr1"
                                         onClick={(e) => this.toggleDropDown1(e)}>1. Summarize the problem
@@ -199,9 +235,9 @@ class NewQuestion extends React.Component {
                                 {this.state.dr1 ? 
 
                                 <div>
-                                        <textarea value={this.state.body}
+                                        <textarea value={this.state.body1}
                                             className="dropdown_textarea"
-                                            onChange={(e) => this.handleBody(e)} 
+                                            onChange={(e) => this.handleBody1(e)} 
                                             onFocus={(e)=> this.handleText1(e)}
                                             onBlur={(e) => this.handleText1(e)}
                                             autoFocus="autofocus"/> 
@@ -228,7 +264,7 @@ class NewQuestion extends React.Component {
 
                                 <div className={this.state.text2 ? "big_div2" : "big_div"}>
                                 <div className="dr2"
-                                    onClick={(e) => this.toggleDropDown2(e)}>1. Summarize the problem
+                                    onClick={(e) => this.toggleDropDown2(e)}>2. Provide background including what you've already tried 
                                         
                                     <span className="plus_minus">{this.state.dr2 ? <i className="fas fa-minus"></i> : <i className="fas fa-plus"></i>}</span>
                                     
@@ -236,23 +272,23 @@ class NewQuestion extends React.Component {
                                 {this.state.dr2 ?
 
                                     <div>
-                                        <textarea value={this.state.body}
+                                        <textarea value={this.state.body2}
                                             className="dropdown_textarea"
-                                            onChange={(e) => this.handleBody(e)}
+                                            onChange={(e) => this.handleBody2(e)}
                                             onFocus={(e) => this.handleText2(e)}
                                             onBlur={(e) => this.handleText2(e)}
                                             autoFocus="autofocus" />
 
                                         <div className="input_below_example">
 
-                                            <div className="header_detail">Include details about your goals and problem</div>
+                                                <div className="header_detail">Include any research you've conducted</div>
 
                                             <div className="separator_bottom">
                                                 <li><i className="fas fa-check carousel_check"></i>
-                                                    “I’m setting up a new server, and want to support UTF-8 fully in my web application. Where do I need to set the encoding/charsets?”
+                                                   “This is for a new Linux server, running MySQL 5, PHP 5 and Apache 2. In the past, I’ve tried on existing servers and always seem to end up having to fall back to ISO-8859-1.”
                                             </li>
                                                 <li><i className="fas fa-times carousel_x"></i>
-                                                    “I want to support UTF-8 fully in my web application.”
+                                                    “This for a new server. In the past, I’ve tried on existing servers.”
                                         </li>
                                             </div>
 
@@ -264,7 +300,7 @@ class NewQuestion extends React.Component {
 
                                 <div className={this.state.text3 ? "big_div2" : "big_div"}>
                                 <div className="dr3"
-                                    onClick={(e) => this.toggleDropDown3(e)}>1. Summarize the problem
+                                    onClick={(e) => this.toggleDropDown3(e)}>3. Show some code
                                         
                                     <span className="plus_minus">{this.state.dr3 ? <i className="fas fa-minus"></i> : <i className="fas fa-plus"></i>}</span>
                                     
@@ -272,23 +308,27 @@ class NewQuestion extends React.Component {
                                 {this.state.dr3 ?
 
                                     <div>
-                                        <textarea value={this.state.body}
+                                        <textarea value={this.state.body3}
                                             className="dropdown_textarea"
-                                            onChange={(e) => this.handleBody(e)}
+                                            onChange={(e) => this.handleBody3(e)}
                                             onFocus={(e) => this.handleText3(e)}
                                             onBlur={(e) => this.handleText3(e)}
                                             autoFocus="autofocus" />
 
                                         <div className="input_below_example">
 
-                                            <div className="header_detail">Include details about your goals and problem</div>
+                                                <div className="header_detail">Share the minimum amount of code others need to reproduce your problem (also called a minimal, reproducible example)</div>
 
                                             <div className="separator_bottom">
                                                 <li><i className="fas fa-check carousel_check"></i>
-                                                    “I’m setting up a new server, and want to support UTF-8 fully in my web application. Where do I need to set the encoding/charsets?”
+                                                    Use code fences and syntax highlighting to format your code properly and provide context
                                             </li>
+                                                    <li><i className="fas fa-times carousel_x"></i>
+                                                        Don’t paste an entire file
+                                        </li>
+                                            
                                                 <li><i className="fas fa-times carousel_x"></i>
-                                                    “I want to support UTF-8 fully in my web application.”
+                                                    Don't paste just one line
                                         </li>
                                             </div>
 
@@ -300,7 +340,7 @@ class NewQuestion extends React.Component {
 
                                 <div className={this.state.text4 ? "big_div2" : "big_div"}>
                                 <div className="dr4"
-                                    onClick={(e) => this.toggleDropDown4(e)}>1. Summarize the problem
+                                    onClick={(e) => this.toggleDropDown4(e)}>4. Describe expected and actual results including any error messages
                                         
                                     <span className="plus_minus">{this.state.dr4 ? <i className="fas fa-minus"></i> : <i className="fas fa-plus"></i>}</span>
                                     
@@ -308,23 +348,23 @@ class NewQuestion extends React.Component {
                                 {this.state.dr4 ?
 
                                     <div>
-                                        <textarea value={this.state.body}
+                                        <textarea value={this.state.body4}
                                             className="dropdown_textarea"
-                                            onChange={(e) => this.handleBody(e)}
+                                            onChange={(e) => this.handleBody4(e)}
                                             onFocus={(e) => this.handleText4(e)}
                                             onBlur={(e) => this.handleText4(e)}
                                             autoFocus="autofocus" />
 
                                         <div className="input_below_example">
 
-                                            <div className="header_detail">Include details about your goals and problem</div>
+                                
 
                                             <div className="separator_bottom">
                                                 <li><i className="fas fa-check carousel_check"></i>
-                                                    “I’m setting up a new server, and want to support UTF-8 fully in my web application. Where do I need to set the encoding/charsets?”
+                                                    “I expect the output of 5/2 to be 2.5, but the actual output is 2.”
                                             </li>
                                                 <li><i className="fas fa-times carousel_x"></i>
-                                                    “I want to support UTF-8 fully in my web application.”
+                                                    “The output is 2.5, but that is wrong.”
                                         </li>
                                             </div>
 
@@ -339,7 +379,7 @@ class NewQuestion extends React.Component {
                            
 
                             <button className="next_button"
-                                onClick={(e) => this.displayDescription(e)}>
+                                onClick={(e) => this.displayReview(e)}>
                                 Next
                             </button>
                         </div>
@@ -349,7 +389,90 @@ class NewQuestion extends React.Component {
                     
 
                     {this.state.displayReview ? 
-                    <input type="submit" value="Create Question" />
+
+                    <div className="carousel_body">
+                        <h1 className="carousel_header">Review your question</h1>
+                        <h2 className="carousel_subheader">Almost there! Let’s give your question one more look. And don’t worry—you can edit your question after it’s posted, too.</h2>
+
+
+                            <div className="carousel_example_1">
+                                <div className="hypothetical">Check for typos, slang, and code formatting issues.</div>
+                                <div className="hypothetical_example">For example: </div>
+                                <ul>
+                                    <div className="separator_top">
+                                        <li><i className="fas fa-check carousel_check"></i>
+                                            Format your code: <span className="code_snippet">SELECT * FROM Users WHERE Id = 1;</span>
+                                        </li>
+                                        <li><i className="fas fa-times carousel_x"></i>
+                                           Don’t include slang or shorthand: “u can’t bc it returns -1”
+                                        </li>
+                                    </div>
+                                </ul>
+                            </div>
+
+                            <div className="carousel_tagline" style={{marginTop: '1.25rem'}}><i className="fa fa-question-circle question_mark" aria-hidden="true"></i><span className="bold_help">Want more help?</span> Check out 
+                                <a href="https://stackoverflow.com/editing-help" style={{ marginLeft: '0.25rem'}}>these tips for editing with Markdown</a> for guidance. 
+                            </div>
+
+                        <label>
+
+                        <div className="carousel_question_title">Title</div>
+                            <input type="text"
+                                className="review_title title_input"
+                                placeholder={this.state.title} />
+                        </label>
+
+                        <div className="review_form_before_submit">
+
+
+                            <span className="group_1">
+                                <span className="review_icon"><i className="fas fa-bold"></i></span>
+                                <span className="review_icon"><i className="fas fa-italic"></i></span>
+                            </span>
+                                
+
+                            <span className="group_2">
+                                <span className="review_icon"><i className="fas fa-link"></i></span>
+                                <span className="review_icon"><i className="fas fa-quote-left"></i></span>
+                                <span className="review_icon"><i className="fas fa-code"></i></span>
+                                <span className="review_icon"><i className="far fa-image"></i></span>
+                                <span className="review_icon"><i className="far fa-file-code"></i></span>
+                            </span>
+
+                                
+                            <span className="group_3">
+                                <span className="review_icon"><i className="fas fa-list-ol"></i></span>
+                                <span className="review_icon"><i className="fas fa-list-ul"></i></span>
+                                <span className="review_icon"><i className="fas fa-stream"></i></span>
+                            </span>
+
+
+                            <span className="group_4">
+                                <span className="review_icon"><i className="fas fa-undo"></i></span>
+                                <span className="review_icon"><i className="fas fa-redo"></i></span>
+                            </span>
+                        </div>
+
+                            <div className="guided_mode_helpers">
+                                <span className="guided_dropdown_link">Links</span>
+                                <span className="guided_dropdown_link">Images</span>
+                                <span className="guided_dropdown_link">Styling/Headers</span>
+                                <span className="guided_dropdown_link">Lists</span>
+                                <span className="guided_dropdown_link">Blockquotes</span>
+                                <span className="guided_dropdown_link">Code</span>
+                                <span className="guided_dropdown_link">HTML</span>
+                            </div>
+
+                        <textarea className="confirmed_textbox"
+                        value={this.state.body}
+                        spellCheck="value"/>
+
+
+                        {this.state.body}
+                     
+                           
+                            <input className="next_button" type="submit" value="Post Your Question" />
+                    </div>
                     : null } 
                     
                 </form>

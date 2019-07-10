@@ -2,6 +2,7 @@
     background-color: white; 
     height: 190vh; 
 }
+
 .question_form {
     transform: translateY(100px); 
 }
@@ -125,6 +126,7 @@
     color: rgb(59, 186, 59); 
     padding-right: 0.5rem; 
     font-size: 1.25rem; 
+    margin-bottom: 0.2rem; 
 }
 
 .carousel_x {
@@ -170,6 +172,11 @@
   color: lightgray; 
 }
 
+.review_title::-webkit-input-placeholder { 
+    color: black; 
+}
+
+
 .next_button {
     float: right; 
     margin-top: 1.8rem; 
@@ -212,6 +219,8 @@
     resize: none; 
     vertical-align: bottom; 
     border: none; 
+    font-family: Consolas; 
+    font-size: 0.9rem; 
 }
 
 .dropdown_textarea {
@@ -258,15 +267,103 @@
     width: 100%; 
     box-sizing: border-box; 
     border: 1px solid rgb(190, 190, 190); 
-        font-family: Arial, Helvetica, sans-serif; 
+    font-family: Arial, Helvetica, sans-serif; 
     font-weight: bold; 
     font-size: 0.8rem; 
     padding: 0.7rem; 
+}
+
+.guided_mode_helpers {
+    width: 100%; 
+    box-sizing: border-box; 
+    font-family: Arial, Helvetica, sans-serif; 
+    font-size: 0.8rem; 
+    padding-left: 0.7rem; 
+    padding-right: 0.7rem; 
+    padding-top: 0.4rem; 
+    padding-bottom: 0.4rem; 
+    background-color: #fef8e0; 
+    border-top: 1px solid rgb(189, 196, 202); 
+    border-left:  1px solid rgb(189, 196, 202); 
+    border-right: 1px solid rgb(189, 196, 202);
+}
+
+.guided_dropdown_link {
+    margin-right: 1.3rem; 
 }
 
 .question_mark {
     font-size: 1.1rem; 
 }
 
+.review_form_before_submit {
+    width: '100%'; 
+    box-sizing: border-box; 
+    border-top: 1px solid rgb(189, 196, 202); 
+    border-left: 1px solid rgb(189, 196, 202); 
+    border-right: 1px solid rgb(189, 196, 202);
+    margin-top: 0.8rem;
+    padding: 0.85rem;  
+}
+
+.review_icon {
+    margin-left: 0.5rem; 
+    margin-right: 0.5rem; 
+}
+
+.review_icon:hover {
+    color: #f48024; 
+    cursor: pointer; 
+}
 
 
+
+.confirmed_textbox {
+    box-sizing: border-box; 
+    height: 125px; 
+    width: 100%;  
+    resize: none;  
+    border-top: 1px solid rgb(189, 196, 202); 
+    border-left:  1px solid rgb(189, 196, 202); 
+    border-right: 1px solid rgb(189, 196, 202);
+    border-bottom:  1px solid rgb(189, 196, 202);
+    font-size: 0.9rem; 
+    font-family: Consolas; 
+    padding: 0.5rem; 
+}
+
+.confirmed_textbox:focus {
+    outline: none; 
+    border: 1px solid #0094ff; 
+    box-shadow: 0 0 0pt 3pt rgb(207, 237, 255); 
+}
+
+.group_1 {
+    margin-right: 0.9rem; 
+}
+
+.group_2 {
+    margin-left: 0.9rem; 
+    margin-right: 0.9rem; 
+}
+
+.group_3 {
+    margin-left: 0.9rem; 
+    margin-right: 0.9rem; 
+}
+
+.group_4 {
+    margin-left: 0.9rem; 
+}
+
+.display_hr_preview {
+    background-color: rgb(189, 196, 202); 
+    height: 1px; 
+    border-top: dotted; 
+}
+
+.code_snippet {
+    font-family: Consolas; 
+    padding: 0.2rem; 
+    background-color: rgb(240, 239, 239); 
+}
