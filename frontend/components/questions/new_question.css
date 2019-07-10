@@ -176,17 +176,34 @@
     color: black; 
 }
 
+.prev_next_buttons {
+    float: right; 
+}
+
+.prev_button {
+    margin-top: 1.5rem; 
+    padding-top: 0.65rem; 
+    padding-bottom: 0.65rem; 
+    padding-left: 0.75rem; 
+    padding-right: 0.75rem; 
+    color: #0077cc; 
+    border: none; 
+    border-radius: 5px; 
+    outline: none; 
+    color: '#fafafb'; 
+    text-decoration: none; 
+    font-family: Arial; 
+    font-size: 0.8rem; 
+}
 
 .next_button {
-    float: right; 
-    margin-top: 1.8rem; 
+    margin-top: 1.5rem; 
     background-color: #0094ff; 
     padding-top: 0.65rem; 
     padding-bottom: 0.65rem; 
     padding-left: 0.75rem; 
     padding-right: 0.75rem; 
     color: white; 
-    border: none; 
     border-radius: 5px; 
     border: 1px solid #007bd3; 
     outline: none; 
@@ -194,6 +211,23 @@
     text-decoration: none; 
     font-family: Arial; 
     font-size: 0.8rem; 
+}
+
+.disabled_next_button {
+    margin-top: 1.5rem; 
+    background-color: #334957; 
+    opacity: 0.4; 
+    padding-top: 0.65rem; 
+    padding-bottom: 0.65rem; 
+    padding-left: 0.75rem; 
+    padding-right: 0.75rem; 
+    color: white; 
+    border-radius: 5px; 
+    outline: none; 
+    color: '#fafafb'; 
+    text-decoration: none; 
+    font-family: Arial; 
+    font-size: 0.8rem;  
 }
 
 .next_button:hover {
@@ -210,6 +244,7 @@
 
 .dr1:hover, .dr2:hover, .dr3:hover, .dr4:hover {
     background-color: #ecf3fa; 
+    cursor: pointer; 
 }
 
 .dropdown_textarea {

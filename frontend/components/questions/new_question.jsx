@@ -22,15 +22,54 @@ class NewQuestion extends React.Component {
             text1: false, 
             text2: false, 
             text3: false, 
-            text4: false 
+            text4: false, 
+            titleError: '', 
+            bodyError: 'Body cannot be blank.'
         }
 
         this.handleSubmit = this.handleSubmit.bind(this); 
+
+        this.setTitleRef = this.setTitleRef.bind(this);
+
+        this.handleClickOutsideTitle = this.handleClickOutsideTitle.bind(this); 
+    }
+
+    componentDidMount() {
+        document.addEventListener('mousedown', this.handleClickOutsideTitle);
+    }
+
+    componentWillUnmount() {
+        document.removeEventListener('mousedown', this.handleClickOutsideTitle);
+    }
+
+    setTitleRef(node) {
+        this.titleRef = node;
+    }
+
+    handleClickOutsideTitle(event) {
+        if (this.state.title.length > 0) {
+            if (this.titleRef && !this.titleRef.contains(event.target)) {
+                if (this.state.title.length > 15) {
+                    this.setState({
+                        titleError: ''
+                    })
+                } else {
+                    this.setState({
+                        titleError: 'Title must be at least 15 characters.'
+                    })
+                }
+            }
+        } else {
+            this.setState({
+                titleError: ''
+            })
+        }
     }
 
     handleSubmit(e) {
         e.preventDefault(); 
-        this.props.createQuestion(this.state)
+        const picked = (({title, body, author_id}) => ({title, body, author_id}))(this.state); 
+        this.props.createQuestion(picked)
             .then(() => this.props.history.push(`/questions`))
     }
 
@@ -43,28 +82,32 @@ class NewQuestion extends React.Component {
     handleBody1(e) {
         this.setState({
             body1: e.target.value, 
-            body: this.state.body1 + this.state.body2 + this.state.body3 + this.state.body4 
+            body: this.state.body1 + this.state.body2 + this.state.body3 + this.state.body4, 
+            bodyError: this.state.body.length === 0 ? 'Body cannot be blank.' : '' 
         })
     }
 
     handleBody2(e) {
         this.setState({
             body2: e.target.value,
-            body: this.state.body1 + this.state.body2 + this.state.body3 + this.state.body4
+            body: this.state.body1 + this.state.body2 + this.state.body3 + this.state.body4, 
+            bodyError: this.state.body.length === 0 ? 'Body cannot be blank.' : '' 
         })
     }
 
     handleBody3(e) {
         this.setState({
             body3: e.target.value,
-            body: this.state.body1 + this.state.body2 + this.state.body3 + this.state.body4
+            body: this.state.body1 + this.state.body2 + this.state.body3 + this.state.body4, 
+            bodyError: this.state.body.length === 0 ? 'Body cannot be blank.' : '' 
         })
     }
 
     handleBody4(e) {
         this.setState({
             body4: e.target.value,
-            body: this.state.body1 + this.state.body2 + this.state.body3 + this.state.body4
+            body: this.state.body1 + this.state.body2 + this.state.body3 + this.state.body4, 
+            bodyError: this.state.body.length === 0 ? 'Body cannot be blank.' : '' 
         })
     }
 
@@ -141,7 +184,8 @@ class NewQuestion extends React.Component {
     }
 
     render() {
-        console.log(this.props.userId)
+        console.log(this.state.title)
+        console.log(this.state.titleError)
         return (
             <div className="new_question_page">
                 <div className="button_header">
@@ -185,18 +229,48 @@ class NewQuestion extends React.Component {
                             </ul>
                         </div>
                             <label><div className="carousel_question_title">Title</div>
+
+                            {this.state.titleError ? 
+                                    
+                                    <label>
+                                <input type="text"
+                                    className="title_input input_field_error"
+                                    value={this.state.title}
+                                        placeholder="What's your programming question? Be specific."
+                                    onChange={(e) => this.handleTitle(e)}
+                                    ref={this.setTitleRef} />
+
+
+                                <div className="inline_errors">
+                                    <div className="input_error_message">{this.state.titleError}</div>
+                                    <i className="fas fa-exclamation-circle error_icon"></i>
+                                </div>
+                                </label>
+                                :
                                 <input type="text"
                                     className="title_input"
                                     value={this.state.title}
-                                        placeholder="What's your programming question? Be specific."
-                                    onChange={(e) => this.handleTitle(e)} />
+                                    placeholder="What's your programming question? Be specific."
+                                    onChange={(e) => this.handleTitle(e)}
+                                    ref={this.setTitleRef} />}
+
                             </label>
 
-
-                            <button className="next_button"
-                                onClick={(e) => this.displayDescription(e)}>
+                            <div className="prev_next_buttons">
+                                {this.state.titleError ? 
+                                
+                                <button className="disabled_next_button"
+                                    onClick={(e) => this.displayDescription(e)}
+                                    disabled={true}>
                                     Next
-                            </button>
+                                </button>
+                                : 
+                                <button className="next_button"
+                                        onClick={(e) => this.displayDescription(e)}>
+                                        Next
+                                </button>
+                                }
+                            </div>
                     </div>
 
                     : null }
@@ -376,12 +450,18 @@ class NewQuestion extends React.Component {
 
                             </div>
                             
-                           
+                            <div className="prev_next_buttons">
+                                <button className="prev_button"
+                                    onClick={(e) => this.displayTitle(e)}>
+                                    Previous
+                                </button>
 
-                            <button className="next_button"
-                                onClick={(e) => this.displayReview(e)}>
-                                Next
-                            </button>
+                                <button className="next_button"
+                                    onClick={(e) => this.displayReview(e)}>
+                                    Next
+                                </button>
+                            </div>
+                           
                         </div>
                     : 
                     null }
@@ -414,14 +494,28 @@ class NewQuestion extends React.Component {
                                 <a href="https://stackoverflow.com/editing-help" style={{ marginLeft: '0.25rem'}}>these tips for editing with Markdown</a> for guidance. 
                             </div>
 
+                        {this.state.titleError ? 
                         <label>
-
-                        <div className="carousel_question_title">Title</div>
+                            <div className="carousel_question_title">Title</div>
                             <input type="text"
-                                className="review_title title_input"
+                                className="review_title title_input input_field_error"
                                 placeholder={this.state.title} />
-                        </label>
 
+                            <div className="inline_errors">
+                                <div className="input_error_message">{this.state.titleError}</div>
+                                <i className="fas fa-exclamation-circle error_icon"></i>
+                                </div>
+                        </label>
+                        : 
+                        <label>
+                                <div className="carousel_question_title">Title</div>
+                                <input type="text"
+                                    className="review_title title_input"
+                                    placeholder={this.state.title} />
+
+               
+                        </label>}
+                                    
                         <div className="review_form_before_submit">
 
 
@@ -463,15 +557,28 @@ class NewQuestion extends React.Component {
                                 <span className="guided_dropdown_link">HTML</span>
                             </div>
 
+                        {this.state.bodyError ? 
+                        <>
+                                    <textarea className="confirmed_textbox input_field_error"
+                                        value={this.state.body}
+                                        spellCheck="value" />
+                                    <div className="inline_errors">
+                                        <div className="input_error_message">{this.state.bodyError}</div>
+                                        <i className="fas fa-exclamation-circle error_icon"></i>
+                                    </div>
+                        </>
+                        : 
                         <textarea className="confirmed_textbox"
                         value={this.state.body}
-                        spellCheck="value"/>
+                        spellCheck="value"/>}
 
 
                         {this.state.body}
                      
-                           
-                            <input className="next_button" type="submit" value="Post Your Question" />
+                           <div className="prev_next_buttons">
+                                <input className="next_button" type="submit" value="Post Your Question" />
+                           </div>
+                            
                     </div>
                     : null } 
                     

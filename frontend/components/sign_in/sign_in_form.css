@@ -150,6 +150,8 @@ body {
 .inline_errors {
     display: flex; 
     justify-content: space-between; 
+    font-family: Arial, Helvetica, sans-serif; 
+    margin-top: 0.1rem; 
 }
 
 .input_error_message {
