@@ -180,7 +180,7 @@ class NewQuestion extends React.Component {
                             <h1 className="carousel_header">Tell us more about your question</h1>
                             <h2 className="carousel_subheader">Your description gives people the information they need to help you answer your question.</h2>
 
-                            <div className="carousel_tagline"><i className="fa fa-question-circle" aria-hidden="true"></i><span className="bold_help">Want more help?</span> Check out these examples of great question descriptions: 
+                            <div className="carousel_tagline"><i className="fa fa-question-circle question_mark" aria-hidden="true"></i><span className="bold_help">Want more help?</span> Check out these examples of great question descriptions: 
                                 <a href="https://stackoverflow.com/questions/50464314/why-isnt-an-animation-flipped-horizontally-when-i-call-setflippedtrue" style={{marginLeft: '0.25rem'}}>Example 1</a>,
                                 <a href="https://stackoverflow.com/questions/50378884/when-catch-doesnt-actually-catch-anything" style={{marginLeft: '0.25rem'}}>Example 2</a>
                             </div>
@@ -203,7 +203,8 @@ class NewQuestion extends React.Component {
                                             className="dropdown_textarea"
                                             onChange={(e) => this.handleBody(e)} 
                                             onFocus={(e)=> this.handleText1(e)}
-                                            onBlur={(e) => this.handleText1(e)}/> 
+                                            onBlur={(e) => this.handleText1(e)}
+                                            autoFocus="autofocus"/> 
 
                                             <div className="input_below_example">
 
@@ -239,7 +240,8 @@ class NewQuestion extends React.Component {
                                             className="dropdown_textarea"
                                             onChange={(e) => this.handleBody(e)}
                                             onFocus={(e) => this.handleText2(e)}
-                                            onBlur={(e) => this.handleText2(e)} />
+                                            onBlur={(e) => this.handleText2(e)}
+                                            autoFocus="autofocus" />
 
                                         <div className="input_below_example">
 
@@ -274,7 +276,8 @@ class NewQuestion extends React.Component {
                                             className="dropdown_textarea"
                                             onChange={(e) => this.handleBody(e)}
                                             onFocus={(e) => this.handleText3(e)}
-                                            onBlur={(e) => this.handleText3(e)} />
+                                            onBlur={(e) => this.handleText3(e)}
+                                            autoFocus="autofocus" />
 
                                         <div className="input_below_example">
 
@@ -309,7 +312,8 @@ class NewQuestion extends React.Component {
                                             className="dropdown_textarea"
                                             onChange={(e) => this.handleBody(e)}
                                             onFocus={(e) => this.handleText4(e)}
-                                            onBlur={(e) => this.handleText4(e)} />
+                                            onBlur={(e) => this.handleText4(e)}
+                                            autoFocus="autofocus" />
 
                                         <div className="input_below_example">
 
