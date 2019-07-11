@@ -14,9 +14,9 @@ class Question extends React.Component {
 
     componentDidMount() {
         this.props.fetchQuestion(this.props.match.params.questionId)
-        this.props.fetchAnswers()
+        this.props.fetchAnswers(this.props.match.params.questionId)
             .then(answers => this.setState({
-                answers: answers 
+                answers: Object.values(answers.answers)
             }))
     }
 
@@ -27,9 +27,6 @@ class Question extends React.Component {
     }
 
     render() {
-        // console.log(this.props.question && this.props.question.authorId)
-        // console.log(this.props.userId)
-        console.log(this.state)
         return (
             <div className="question_page">
                 <Sidebar/>
