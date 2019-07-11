@@ -90,3 +90,11 @@
 .asked_viewed_active_li {
     padding-bottom: 1.25rem; 
 }
+
+.delete_button_danger:hover {
+    cursor: pointer; 
+}
+
+.delete_button_danger:focus {
+    outline: none; 
+}

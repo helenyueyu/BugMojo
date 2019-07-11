@@ -46,14 +46,31 @@ class Question extends React.Component {
                             <div>
                                 {this.props.question && this.props.question.body}
                             </div>
-                            <div style={{display: 'block'}}>
+                            <div style={{marginTop: '1.5rem', display: 'block'}}>
                                 {
                                     this.props.question && this.props.userId === this.props.question.authorId && 
-                                    <Link to={`/questions/${this.props.match.params.questionId}/edit`}>edit</Link>
+                                    <Link to={`/questions/${this.props.match.params.questionId}/edit`} 
+                                    style={{
+                                        color: 'gray',
+                                        textDecoration: 'none'
+                                    }}>
+                                        edit
+                                    </Link>
                                 }
                                 {
                                     this.props.question && this.props.userId === this.props.question.authorId && 
-                                    <button onClick={() => this.props.deleteQuestion(this.props.question)}>Delete</button>
+                                    <button className="delete_button_danger"
+                                        onClick={() => 
+                                        this.props.deleteQuestion(this.props.question)
+                                        .then(() => this.props.history.push('/questions'))}
+                                    style={{
+                                        color: 'darkRed', 
+                                        border: 'none', 
+                                        fontFamily: 'Arial', 
+                                        fontSize: '0.9rem'
+                                    }}>
+                                        delete
+                                    </button>
                                 }
                             </div>
                         </div>
