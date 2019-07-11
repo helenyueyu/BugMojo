@@ -4,3 +4,11 @@ export const getAnswers = id => (
         url: `/api/questions/${id}/answers`
     })
 )
+
+export const createAnswer = answer => (
+    $.ajax({
+        method: 'POST', 
+        url: '/api/answers', 
+        data: { answer }
+    })
+)

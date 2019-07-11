@@ -27,7 +27,10 @@ class Question extends React.Component {
             question: this.props.question, 
             answers: [], 
             users: this.props.users, 
-            image: images[Math.floor(Math.random()*10)]
+            image: images[Math.floor(Math.random()*10)], 
+            answer: '', 
+            author_id: '', 
+            question_id: '',
         }; 
     }
 
@@ -35,7 +38,8 @@ class Question extends React.Component {
     componentDidMount() {
         this.props.fetchQuestion(this.props.match.params.questionId)
             .then(question => this.setState({
-                question: question.question 
+                question: question.question, 
+                question_id: question.question.id 
             }))
         this.props.fetchAnswers(this.props.match.params.questionId)
             .then(answers => this.setState({
@@ -43,7 +47,8 @@ class Question extends React.Component {
             }))
         this.props.fetchAllUsers()
             .then(users => this.setState({
-                users: Object.values(users.users)
+                users: Object.values(users.users), 
+                author_id: this.props.userId
             }))
     }
 
@@ -51,6 +56,12 @@ class Question extends React.Component {
         if (prevProps.match.params.questionId != this.props.match.params.questionId) {
             this.props.fetchQuestion(this.props.match.params.questionId)
         }
+    }
+
+    handleAnswer(e) {
+        this.setState({
+            answer: e.target.value 
+        })
     }
 
     search(searchId, arr) {
@@ -213,7 +224,7 @@ class Question extends React.Component {
                                         <div style={{marginLeft: '1rem'}}>{answer.body}</div>
                                     </div>
                                 <hr style={{
-                                    marginTop: '0.5rem',
+                                    marginTop: '0rem',
                                     marginLeft: '2rem', 
                                     borderTop: "solid 1px lightgray",
                                     backgroundColor: 'transparent',
@@ -280,7 +291,48 @@ class Question extends React.Component {
                                 </div>
                             )}
 
-                            <div>Hello</div>
+
+                            <form className="answeree_form">
+                                
+                                    <div className="review_form_before_submit_answer">
+
+
+                                        <span className="group_1">
+                                            <span className="review_icon"
+                                                onClick={(e) => this.handleBoldText(e)}>
+                                                <i className="fas fa-bold"></i>
+                                            </span>
+                                            <span className="review_icon"><i className="fas fa-italic"></i></span>
+                                        </span>
+
+
+                                        <span className="group_2">
+                                            <span className="review_icon"><i className="fas fa-link"></i></span>
+                                            <span className="review_icon"><i className="fas fa-quote-left"></i></span>
+                                            <span className="review_icon"><i className="fas fa-code"></i></span>
+                                            <span className="review_icon"><i className="far fa-image"></i></span>
+                                            <span className="review_icon"><i className="far fa-file-code"></i></span>
+                                        </span>
+
+
+                                        <span className="group_3">
+                                            <span className="review_icon"><i className="fas fa-list-ol"></i></span>
+                                            <span className="review_icon"><i className="fas fa-list-ul"></i></span>
+                                            <span className="review_icon"><i className="fas fa-stream"></i></span>
+                                        </span>
+
+
+                                        <span className="group_4">
+                                            <span className="review_icon"><i className="fas fa-undo"></i></span>
+                                            <span className="review_icon"><i className="fas fa-redo"></i></span>
+                                        </span>
+                                    </div>
+
+                                    <textarea className="edit_body_field_2"
+                                        value={this.state.answer}
+                                        onChange={(e) => this.handleAnswer(e)} />
+                            </form>
+                                
                             </div>
                         </div>
 
