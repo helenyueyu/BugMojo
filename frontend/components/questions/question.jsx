@@ -80,6 +80,8 @@ class Question extends React.Component {
                                     </button>
                                 }
                             </div>
+                        
+                            {this.state.answers && this.state.answers.map(answer => <li>{answer.body}</li>)}
                         </div>
 
 
