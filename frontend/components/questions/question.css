@@ -98,3 +98,8 @@
 .delete_button_danger:focus {
     outline: none; 
 }
+
+.askee_box {
+    float: right; 
+    background-color: #e0f1ff; 
+}

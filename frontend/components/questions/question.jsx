@@ -106,9 +106,12 @@ class Question extends React.Component {
                             </div>
                         
                             
-                            {this.state.question && this.state.question.authorId && this.state.users && this.state.users[this.state.question.authorId-1] && this.state.users[this.state.question.authorId-1].username} <br/>
-                            {this.state.question && moment(this.state.question.createdAt).fromNow()}
-  
+                            <div className="askee_box">
+                                <img width="30px" src={window.identicon} alt="identicon"/>
+                                {this.state.question && this.state.question.authorId && this.state.users && this.state.users[this.state.question.authorId - 1] && this.state.users[this.state.question.authorId - 1].username} <br />
+                                {this.state.question && moment(this.state.question.createdAt).fromNow()}
+                            </div>
+
                             <h1>{this.state.answers && this.state.answers.length} Answer{this.state.answers && this.state.answers.length === 1 ? "" : "s"}</h1>
                             {this.state.answers && this.state.answers.map(answer => 
                                     <li key={answer.id}>{answer.body}</li>
