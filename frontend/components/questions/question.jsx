@@ -3,20 +3,32 @@ import Sidebar from './sidebar';
 import Meta from './meta'; 
 import Vote from './vote'; 
 import { Link } from 'react-router-dom'; 
+import moment from 'moment'; 
 
 import './question.css'; 
 
 class Question extends React.Component {
     constructor(props) {
         super(props); 
-        this.state = {}; 
+        this.state = {
+            question: this.props.question, 
+            answers: [], 
+            users: this.props.users 
+        }; 
     }
 
     componentDidMount() {
         this.props.fetchQuestion(this.props.match.params.questionId)
+            .then(question => this.setState({
+                question: question.question 
+            }))
         this.props.fetchAnswers(this.props.match.params.questionId)
             .then(answers => this.setState({
                 answers: Object.values(answers.answers)
+            }))
+        this.props.fetchAllUsers()
+            .then(users => this.setState({
+                users: Object.values(users.users)
             }))
     }
 
@@ -26,7 +38,19 @@ class Question extends React.Component {
         }
     }
 
+    search(searchId, arr) {
+        for (let i = 0; i < arr.length; i++) {
+            if (arr[i].id === searchId) {
+                return arr[i]
+            }
+        }
+    }
+
     render() {
+        console.log(this.state) 
+        // if (this.state.question) {
+        //     console.log(this.state.question.authorId)
+        // }
         return (
             <div className="question_page">
                 <Sidebar/>
@@ -81,7 +105,14 @@ class Question extends React.Component {
                                 }
                             </div>
                         
-                            {this.state.answers && this.state.answers.map(answer => <li>{answer.body}</li>)}
+                            
+                            {this.state.question && this.state.question.authorId && this.state.users && this.state.users[this.state.question.authorId-1] && this.state.users[this.state.question.authorId-1].username} <br/>
+                            {this.state.question && moment(this.state.question.createdAt).fromNow()}
+  
+                            <h1>{this.state.answers && this.state.answers.length} Answer{this.state.answers && this.state.answers.length === 1 ? "" : "s"}</h1>
+                            {this.state.answers && this.state.answers.map(answer => 
+                                    <li key={answer.id}>{answer.body}</li>
+                            )}
                         </div>
 
 
