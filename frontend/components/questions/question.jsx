@@ -28,10 +28,12 @@ class Question extends React.Component {
             answers: [], 
             users: this.props.users, 
             image: images[Math.floor(Math.random()*10)], 
-            answer: '', 
+            body: '', 
             author_id: '', 
             question_id: '',
         }; 
+
+        this.handleSubmit = this.handleSubmit.bind(this); 
     }
 
 
@@ -60,16 +62,15 @@ class Question extends React.Component {
 
     handleAnswer(e) {
         this.setState({
-            answer: e.target.value 
+            body: e.target.value 
         })
     }
 
-    search(searchId, arr) {
-        for (let i = 0; i < arr.length; i++) {
-            if (arr[i].id === searchId) {
-                return arr[i]
-            }
-        }
+    handleSubmit(e) {
+        e.preventDefault();
+        const picked = (({ body, author_id, question_id }) => ({ body, author_id, question_id }))(this.state);
+        this.props.createAnswer(picked)
+            .then(() => this.props.history.push(`/questions/${picked.question_id}`))
     }
 
     render() {
@@ -86,9 +87,6 @@ class Question extends React.Component {
             window.i9,
             window.i10
         ]
-        // if (this.state.question) {
-        //     console.log(this.state.question.authorId)
-        // }
         const random1 = Math.floor(Math.random() * 10); 
         const random2 = Math.floor(Math.random() * 10); 
         const random3 = Math.floor(Math.random() * 10); 
@@ -292,7 +290,7 @@ class Question extends React.Component {
                             )}
 
 
-                            <form className="answeree_form">
+                            <form className="answeree_form" onSubmit={this.handleSubmit}>
                                 
                                     <div className="review_form_before_submit_answer">
 
@@ -331,6 +329,10 @@ class Question extends React.Component {
                                     <textarea className="edit_body_field_2"
                                         value={this.state.answer}
                                         onChange={(e) => this.handleAnswer(e)} />
+
+                                    <button className="next_button" onClick={this.handleSubmit}>
+                                        Post Your Answer
+                                    </button>
                             </form>
                                 
                             </div>
