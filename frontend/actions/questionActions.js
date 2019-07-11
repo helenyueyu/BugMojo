@@ -1,6 +1,6 @@
 import * as questionAPIUtil from '../util/questionAPIUtil'; 
 
-export const RECEIVE_ALL_QUESTIONS = 'FETCH_ALL_QUESTIONS'; 
+export const RECEIVE_ALL_QUESTIONS = 'RECEIVE_ALL_QUESTIONS'; 
 export const RECEIVE_QUESTION = 'RECEIVE_QUESTION'; 
 export const REMOVE_QUESTION = 'REMOVE_QUESTION'; 
 

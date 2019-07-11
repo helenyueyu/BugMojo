@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 import Question from './question'; 
 import { fetchQuestion, deleteQuestion } from '../../actions/questionActions'; 
 
+
 const mapStateToProps = (state, ownProps) => ({
     question: state.entities.questions[ownProps.match.params.questionId], 
     userId: state.session.id

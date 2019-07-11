@@ -15,6 +15,8 @@ import SignInFormContainer from './sign_in/sign_in_form_container';
 import SignInFormContainerDemo from './sign_in/sign_in_form_container_demo';
 import ProfileContainer from './profile/profile_container'; 
 
+import ErrorPage from './error/error_page'; 
+
 import { AuthRoute, ProtectedRoute } from '../util/routeUtil'
 
 const App = () => (
@@ -31,6 +33,8 @@ const App = () => (
             <AuthRoute exact path="/login" component={SignInFormContainer} />
             <AuthRoute exact path="/login/demo" component={SignInFormContainerDemo} />
             <ProtectedRoute exact path="/users/:userName" component={ProfileContainer} />
+
+            <Route path="/" component={ErrorPage} />
         </Switch>
     </div>
 );
