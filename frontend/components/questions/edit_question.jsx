@@ -41,7 +41,7 @@ class EditQuestion extends React.Component {
         return (
             <div className="edit_question_page">
                 <Sidebar/>
-                <form className="question_form" onSubmit={this.handleSubmit}>
+                <form className="question_form_helen" onSubmit={this.handleSubmit}>
                     <label><span className="edit_label">Title </span>
                     <input type="text"
                             className="edit_title_field"
