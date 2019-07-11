@@ -27,7 +27,12 @@ class Question extends React.Component {
                 <div className="overall_div">
                     <div className="question_title">
                         <div>{this.props.question && this.props.question.title}</div>
-                        <div><button className="question_ask_question">Ask Question</button></div>
+                        <div>
+                            <Link to="/questions/new">
+                                <button className="question_ask_question">Ask Question</button>
+                            </Link>
+                            
+                        </div>
                     </div>
 
                     <hr className="question_hr"/>

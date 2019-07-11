@@ -46,6 +46,11 @@
     font-size: 0.8rem; 
 }
 
+.question_ask_question:hover {
+    background-color: #0076cb; 
+    cursor: pointer; 
+}
+
 .question_aditya {
     display: flex; 
     flex-direction: row; 

@@ -100,3 +100,8 @@ body {
     font-family: Arial; 
     font-size: 0.8rem; 
 }
+
+.ask_question_button:hover {
+    background-color: #0076cb; 
+    cursor: pointer; 
+}

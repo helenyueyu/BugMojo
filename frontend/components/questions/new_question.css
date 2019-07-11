@@ -181,7 +181,8 @@
 }
 
 .prev_button {
-    margin-top: 1.5rem; 
+    margin-top: 1.5rem;
+    margin-left: 0.35rem;  
     padding-top: 0.65rem; 
     padding-bottom: 0.65rem; 
     padding-left: 0.75rem; 
@@ -194,6 +195,11 @@
     text-decoration: none; 
     font-family: Arial; 
     font-size: 0.8rem; 
+}
+
+.prev_button:hover {
+    background-color: #ecf3fa; 
+    cursor: pointer; 
 }
 
 .next_button {

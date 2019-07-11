@@ -1,3 +1,60 @@
+.edit_question_page {
+    background-color: white; 
+    height: 150vh; 
+    display: flex; 
+}
+
 .question_form {
-    transform: translateY(200px); 
+    transform: translate(200px, 100px);
+}
+
+.edit_label {
+    font-family: Arial; 
+    font-size: 1rem; 
+    font-weight: bold; 
+    margin-bottom: 0.3rem; 
+}
+
+.edit_title_field {
+    box-sizing: border-box; 
+    width: 700px; 
+    display: block; 
+    padding: 0.5rem; 
+    margin-bottom: 1rem; 
+    font-size: 0.85rem; 
+}
+
+.edit_title_field:focus {
+    outline: none; 
+    border: 1px solid #0094ff; 
+    box-shadow: 0 0 0pt 3pt rgb(207, 237, 255); 
+}
+
+.edit_body_field {
+    box-sizing: border-box; 
+    width: 700px; 
+    display: block; 
+    resize: none; 
+    padding: 0.5rem; 
+    border: 1px solid rgb(189, 196, 202); 
+    font-family: Consolas; 
+    margin-bottom: 1rem; 
+    font-size: 0.85rem; 
+    height: 200px; 
+    overflow: scroll; 
+}
+
+.edit_body_field:focus {
+    outline: none; 
+    border: 1px solid #0094ff; 
+    box-shadow: 0 0 0pt 3pt rgb(207, 237, 255); 
+}
+
+.review_form_before_submit_2 {
+    width: '100%'; 
+    box-sizing: border-box; 
+    border-top: 1px solid rgb(189, 196, 202); 
+    border-left: 1px solid rgb(189, 196, 202); 
+    border-right: 1px solid rgb(189, 196, 202);
+    padding: 0.85rem;  
 }
