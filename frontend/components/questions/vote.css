@@ -13,11 +13,13 @@
 .vote_aditya_up {
     font-size: 2.8rem; 
     color: rgb(189, 189, 189);
-    transform: scale(1.4, 1); 
+    transform: scale(1.2, 1); 
+    transform: translateY(5px); 
 }
 
 .vote_aditya_down {
     color: rgb(189, 189, 189);
     font-size: 2.8rem; 
-    transform: scale(1.4, 1); 
+    transform: scale(1.2, 1); 
+    transform: translateY(-5px); 
 }

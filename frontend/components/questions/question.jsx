@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import moment from 'moment'; 
 
 import './question.css'; 
+import { inherits } from 'util';
 
 class Question extends React.Component {
     constructor(props) {
@@ -62,9 +63,24 @@ class Question extends React.Component {
 
     render() {
         console.log(this.state) 
+        const images = [
+            window.i,
+            window.i2,
+            window.i3,
+            window.i4,
+            window.i5,
+            window.i6,
+            window.i7,
+            window.i8,
+            window.i9,
+            window.i10
+        ]
         // if (this.state.question) {
         //     console.log(this.state.question.authorId)
         // }
+        const random1 = Math.floor(Math.random() * 10); 
+        const random2 = Math.floor(Math.random() * 10); 
+        const random3 = Math.floor(Math.random() * 10); 
         return (
             <div className="question_page">
                 <Sidebar/>
@@ -83,8 +99,11 @@ class Question extends React.Component {
                     <hr className="question_hr"/>
 
                     <div className="question_aditya">
-
-                        <Vote votes={Math.floor(Math.random()*100)}/>
+                        <div style={{ transform: 'translateX(10px)' }}>
+                            <Vote 
+                                votes={Math.floor(Math.random() * 100)} />
+                        </div>
+                        
 
 
                         <div className="question_body">
@@ -128,15 +147,141 @@ class Question extends React.Component {
                                     <img style={{marginRight: '0.2rem', marginTop: '0.2rem', marginRight: '0.5rem'}} width="35px" height="35px" src={this.state.image} alt="identicon" />
                                     <div style={{display: 'flex', flexDirection: 'column'}}>
                                         <div style={{ color: '#0076cb', fontSize: '0.9rem'}}>{this.state.question && this.state.question.authorId && this.state.users && this.state.users[this.state.question.authorId - 1] && this.state.users[this.state.question.authorId - 1].username}</div>
-                                        <div style={{ transform: 'translateY(-3px)', fontSize: '0.8rem' }}><span>{Math.floor(Math.random() * 10)}</span> <span>&#8226;</span></div>
+                                        <div style={{ display: 'flex', flexDirection: 'row', transform: 'translateY(-3px)', fontSize: '0.8rem' }}>
+                                            
+                                            <div style={{color: 'gray', fontWeight: 'bold'}}>{Math.floor(Math.random() * 10)}</div> 
+                                            
+                                            {random1 === 0 ? 
+                                            null 
+                                            :
+                                            <>
+                                            <div style={{ marginLeft: '0.45rem', marginRight: '0.2rem', transform: 'translateY(-6px)', fontSize: '1.3rem', color: '#ffcf0f', opacity: 0.8}}>
+                                                <span>&#8226;</span>
+                                            </div>
+                                            <div style={{ color: 'gray' }}>{random1}</div>
+                                            </>
+                                            }
+
+                                            
+
+                                            {random2 === 0 ? 
+                                            null: 
+                                            <>
+                                            <div style={{ marginLeft: '0.45rem', marginRight: '0.2rem', transform: 'translateY(-6px)', fontSize: '1.3rem', color: '#A8A8A8', opacity: 0.8}}>
+                                                <span>&#8226;</span>
+                                            </div>
+                                            <div style={{ color: 'gray' }}>{random2}</div>
+                                            </>
+                                            }
+
+                                            
+
+                                            {random3 === 0 ? 
+                                            null: 
+                                            <>
+                                            <div style={{ marginLeft: '0.45rem', marginRight: '0.2rem', transform: 'translateY(-6px)', fontSize: '1.3rem', color: '#965A38', opacity: 0.8 }}>
+                                                <span>&#8226;</span>
+                                            </div>
+                                            <div style={{ color: 'gray' }}>{random3}</div>
+                                            </>
+                                            }
+                                            
+
+                                        </div>
                                     </div>
                                 </div>
                             </div>
 
-                            <h1>{this.state.answers && this.state.answers.length} Answer{this.state.answers && this.state.answers.length === 1 ? "" : "s"}</h1>
+                            <div style={{fontSize: '1.3rem', transform: 'translateX(-50px)', marginTop: '8rem'}}>
+                                {this.state.answers && this.state.answers.length} Answer{this.state.answers && this.state.answers.length === 1 ? "" : "s"}
+                            </div>
+                            <hr style={{
+                                transform: 'translateX(-50px)', 
+                                marginTop: '0.5rem',
+                                borderTop: "solid 1px lightgray",
+                                backgroundColor: 'transparent',
+                                borderLeft: 'none',
+                                borderRight: 'none',
+                                borderBottom: 'none', 
+                            }} />
+
+                            <div style={{transform: 'translateX(-80px)'}}>
                             {this.state.answers && this.state.answers.map(answer => 
-                                    <li key={answer.id}>{answer.body}</li>
+                                <div key={answer.id}>
+                                    <div  style={{display: 'flex', direction: 'row'}}>
+                                        <Vote votes={Math.floor(Math.random()*10)}/> 
+                                        <div style={{marginLeft: '1rem'}}>{answer.body}</div>
+                                    </div>
+                                <hr style={{
+                                    marginTop: '0.5rem',
+                                    marginLeft: '2rem', 
+                                    borderTop: "solid 1px lightgray",
+                                    backgroundColor: 'transparent',
+                                    borderLeft: 'none',
+                                    borderRight: 'none',
+                                    borderBottom: 'none',
+                                }} />
+
+
+                                    <div className="answeree_box">
+                                        <div style={{ display: 'block', color: 'gray', fontSize: '0.8rem' }}>
+                                            asked {moment(answer.createdAt).fromNow()}
+                                        </div>
+                                        <div style={{ display: 'flex', flexDirection: 'row' }}>
+                                            <img style={{ marginRight: '0.2rem', marginTop: '0.2rem', marginRight: '0.5rem' }} width="35px" height="35px" src={images[Math.floor(Math.random() * 10)]} alt="identicon" />
+                                            <div style={{ display: 'flex', flexDirection: 'column' }}>
+                                                <div style={{ color: '#0076cb', fontSize: '0.9rem' }}>{this.state.users && this.state.users[answer.authorId - 1] && this.state.users[answer.authorId - 1].username}</div>
+                                                <div style={{ display: 'flex', flexDirection: 'row', transform: 'translateY(-3px)', fontSize: '0.8rem' }}>
+
+                                                    <div style={{ color: 'gray', fontWeight: 'bold' }}>{Math.floor(Math.random() * 10)}</div>
+
+                                                    {random1 === 0 ?
+                                                        null
+                                                        :
+                                                        <>
+                                                            <div style={{ marginLeft: '0.45rem', marginRight: '0.2rem', transform: 'translateY(-6px)', fontSize: '1.3rem', color: '#ffcf0f', opacity: 0.8 }}>
+                                                                <span>&#8226;</span>
+                                                            </div>
+                                                            <div style={{ color: 'gray' }}>{random1}</div>
+                                                        </>
+                                                    }
+
+
+
+                                                    {random2 === 0 ?
+                                                        null :
+                                                        <>
+                                                            <div style={{ marginLeft: '0.45rem', marginRight: '0.2rem', transform: 'translateY(-6px)', fontSize: '1.3rem', color: '#A8A8A8', opacity: 0.8 }}>
+                                                                <span>&#8226;</span>
+                                                            </div>
+                                                            <div style={{ color: 'gray' }}>{random2}</div>
+                                                        </>
+                                                    }
+
+
+
+                                                    {random3 === 0 ?
+                                                        null :
+                                                        <>
+                                                            <div style={{ marginLeft: '0.45rem', marginRight: '0.2rem', transform: 'translateY(-6px)', fontSize: '1.3rem', color: '#965A38', opacity: 0.8 }}>
+                                                                <span>&#8226;</span>
+                                                            </div>
+                                                            <div style={{ color: 'gray' }}>{random3}</div>
+                                                        </>
+                                                    }
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                            
+                                </div>
                             )}
+
+                            <div>Hello</div>
+                            </div>
                         </div>
 
 

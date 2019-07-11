@@ -4,6 +4,7 @@
     flex-direction: row; 
     background-color:white; 
     height: 140vh; 
+    overflow-x: hidden; 
 }
 .overall_div {
     width: 82%;  
@@ -14,7 +15,7 @@
     transform: translateY(60px); 
     font-family: Arial, Helvetica, sans-serif; 
     font-size: 1.8rem; 
-    padding-left: 1.5rem; 
+    padding-left: 2.5rem; 
     padding-top: 2rem; 
     display: flex; 
     justify-content: space-between; 
@@ -25,7 +26,7 @@
     border: none; 
     height: 1px; 
     transform: translateY(55px); 
-    margin-left: 1.5rem; 
+    margin-left: 2.5rem; 
 }
 
 .question_ask_question {
@@ -59,9 +60,9 @@
 
 .question_body {
     font-family: Arial, Helvetica, sans-serif; 
-    margin-left: 1rem; 
+    margin-left: 1.2rem; 
     margin-right: 1rem;
-    line-height: 1.6; 
+    line-height: 1.5; 
     font-size: 0.95rem; 
     flex-grow: 0; 
     flex-shrink: 0; 
@@ -107,4 +108,15 @@
     padding-top: 0.3rem; 
     padding-bottom: 0.3rem; 
     width: 175px; 
+    height: 65px; 
+}
+
+.answeree_box {
+    float: right; 
+    padding-left: 0.4rem; 
+    padding-right: 0.4rem; 
+    padding-bottom: 0.3rem; 
+    width: 175px; 
+    height: 45px; 
+    transform: translateY(-110px); 
 }
