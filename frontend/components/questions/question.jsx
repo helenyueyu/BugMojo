@@ -121,14 +121,14 @@ class Question extends React.Component {
                         
                             
                             <div className="askee_box">
-                                <div style={{display: 'block'}}>
+                                <div style={{display: 'block', color: 'gray', fontSize: '0.8rem'}}>
                                     asked {this.state.question && moment(this.state.question.createdAt).fromNow()}
                                 </div>
                                 <div style={{display: 'flex', flexDirection: 'row'}}>
-                                    <img width="35px" height="35px" src={this.state.image} alt="identicon" />
+                                    <img style={{marginRight: '0.2rem', marginTop: '0.2rem', marginRight: '0.5rem'}} width="35px" height="35px" src={this.state.image} alt="identicon" />
                                     <div style={{display: 'flex', flexDirection: 'column'}}>
-                                        <div>{this.state.question && this.state.question.authorId && this.state.users && this.state.users[this.state.question.authorId - 1] && this.state.users[this.state.question.authorId - 1].username}</div>
-                                        <div>singing </div>
+                                        <div style={{ color: '#0076cb', fontSize: '0.9rem'}}>{this.state.question && this.state.question.authorId && this.state.users && this.state.users[this.state.question.authorId - 1] && this.state.users[this.state.question.authorId - 1].username}</div>
+                                        <div style={{ transform: 'translateY(-3px)', fontSize: '0.8rem' }}><span>{Math.floor(Math.random() * 10)}</span> <span>&#8226;</span></div>
                                     </div>
                                 </div>
                             </div>
