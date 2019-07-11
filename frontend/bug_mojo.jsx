@@ -5,6 +5,8 @@ import configureStore from './store/store';
 import Root from './components/root'; 
 import { login, logout, signup } from './actions/sessionActions';
 import { fetchAllQuestions, fetchQuestion } from './actions/questionActions'; 
+import { fetchAnswers } from './actions/answerActions'; 
+
 import './bug_mojo.css';
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -29,6 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Testing purposes 
     window.fetchAllQuestions = fetchAllQuestions; 
     window.fetchQuestion = fetchQuestion; 
+    window.fetchAnswers = fetchAnswers;  
 
     window.store = store; 
     window.getState = store.getState; 

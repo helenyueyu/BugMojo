@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'; 
 import Question from './question'; 
 import { fetchQuestion, deleteQuestion } from '../../actions/questionActions'; 
-
+import { fetchAnswers } from '../../actions/answerActions'; 
 
 const mapStateToProps = (state, ownProps) => ({
     question: state.entities.questions[ownProps.match.params.questionId], 
@@ -10,7 +10,8 @@ const mapStateToProps = (state, ownProps) => ({
 
 const mapDispatchToProps = dispatch => ({
     fetchQuestion: id => dispatch(fetchQuestion(id)), 
-    deleteQuestion: question => dispatch(deleteQuestion(question))
+    deleteQuestion: question => dispatch(deleteQuestion(question)), 
+    fetchAnswers: () => dispatch(fetchAnswers())
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Question); 

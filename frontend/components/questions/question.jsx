@@ -7,8 +7,17 @@ import { Link } from 'react-router-dom';
 import './question.css'; 
 
 class Question extends React.Component {
+    constructor(props) {
+        super(props); 
+        this.state = {}; 
+    }
+
     componentDidMount() {
         this.props.fetchQuestion(this.props.match.params.questionId)
+        this.props.fetchAnswers()
+            .then(answers => this.setState({
+                answers: answers 
+            }))
     }
 
     componentDidUpdate(prevProps) {
@@ -18,8 +27,9 @@ class Question extends React.Component {
     }
 
     render() {
-        console.log(this.props.question && this.props.question.authorId)
-        console.log(this.props.userId)
+        // console.log(this.props.question && this.props.question.authorId)
+        // console.log(this.props.userId)
+        console.log(this.state)
         return (
             <div className="question_page">
                 <Sidebar/>
