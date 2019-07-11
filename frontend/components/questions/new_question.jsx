@@ -616,7 +616,13 @@ class NewQuestion extends React.Component {
                             }} />
                      
                            <div className="prev_next_buttons">
-                                <input className="next_button" type="submit" value="Post Your Question" />
+                                {this.state.bodyError || this.state.titleError ? 
+                                <button className="disabled_next_button"
+                                    disabled={true}>
+                                    Post Your Question 
+                                </button>
+                                : <input className="next_button" type="submit" value="Post Your Question" />
+                                }
                            </div>
                             
                     </div>
