@@ -101,5 +101,9 @@
 
 .askee_box {
     float: right; 
-    background-color: #e0f1ff; 
+    background-color: #e0f0ff; 
+    padding-left: 0.4rem; 
+    padding-right: 0.4rem; 
+    padding-top: 0.3rem; 
+    padding-bottom: 0.3rem; 
 }

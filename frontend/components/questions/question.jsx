@@ -10,12 +10,26 @@ import './question.css';
 class Question extends React.Component {
     constructor(props) {
         super(props); 
+        const images = [
+            window.i, 
+            window.i2, 
+            window.i3, 
+            window.i4, 
+            window.i5, 
+            window.i6, 
+            window.i7, 
+            window.i8, 
+            window.i9, 
+            window.i10
+        ]
         this.state = {
             question: this.props.question, 
             answers: [], 
-            users: this.props.users 
+            users: this.props.users, 
+            image: images[Math.floor(Math.random()*10)]
         }; 
     }
+
 
     componentDidMount() {
         this.props.fetchQuestion(this.props.match.params.questionId)
@@ -107,9 +121,16 @@ class Question extends React.Component {
                         
                             
                             <div className="askee_box">
-                                <img width="30px" src={window.identicon} alt="identicon"/>
-                                {this.state.question && this.state.question.authorId && this.state.users && this.state.users[this.state.question.authorId - 1] && this.state.users[this.state.question.authorId - 1].username} <br />
-                                {this.state.question && moment(this.state.question.createdAt).fromNow()}
+                                <div style={{display: 'block'}}>
+                                    asked {this.state.question && moment(this.state.question.createdAt).fromNow()}
+                                </div>
+                                <div style={{display: 'flex', flexDirection: 'row'}}>
+                                    <img width="35px" height="35px" src={this.state.image} alt="identicon" />
+                                    <div style={{display: 'flex', flexDirection: 'column'}}>
+                                        <div>{this.state.question && this.state.question.authorId && this.state.users && this.state.users[this.state.question.authorId - 1] && this.state.users[this.state.question.authorId - 1].username}</div>
+                                        <div>singing </div>
+                                    </div>
+                                </div>
                             </div>
 
                             <h1>{this.state.answers && this.state.answers.length} Answer{this.state.answers && this.state.answers.length === 1 ? "" : "s"}</h1>
