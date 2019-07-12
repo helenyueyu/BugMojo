@@ -1,6 +1,4 @@
-# README
-
-# Bug Mojo 
+# Bug Mojo README
 
 Bug mojo is a place where people with questions can post questions and get solutions. At Bug Mojo, you can: 
 
