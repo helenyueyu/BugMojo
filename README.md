@@ -8,7 +8,8 @@ Bug mojo is a place where people with questions can post questions and get solut
 2) Post answers 
 
 
-![alt text](https://raw.githubusercontent.com/tokyosuite/BugMojo/splash.png)
+
+![alt text](https://github.com/tokyosuite/BugMojo/blob/master/splash.png)
 
 
 Bug mojo 
