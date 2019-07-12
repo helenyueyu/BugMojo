@@ -6,7 +6,8 @@ import { fetchAnswers, createAnswer } from '../../actions/answerActions';
 const mapStateToProps = (state, ownProps) => ({
     question: state.entities.questions[ownProps.match.params.questionId], 
     userId: state.session.id, 
-    users: Object.values(state.entities.users)
+    users: Object.values(state.entities.users), 
+    answers: state.entities.answers 
 })
 
 const mapDispatchToProps = dispatch => ({

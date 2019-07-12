@@ -7,9 +7,23 @@ class Api::AnswersController < ApplicationController
     def create 
         @answer = Answer.new(answer_params)
         if @answer.save 
-            render "api/questions/show"
+            
+            # @question = Question.find(@answer.question_id) 
+            # @answers = @question.answers 
+            render :show
+            # render "api/questions/show"
         else
             render json: @answer.errors.full_messages, status: 422
+        end
+    end
+
+    def destroy 
+        @answer = Answer.all.find_by(question_id: params[:question_id], author_id: answer_params[:author_id])
+
+        if @answer.destroy 
+            render :show 
+        else
+            render json: @answer.errors.full_messages, status: 422 
         end
     end
 

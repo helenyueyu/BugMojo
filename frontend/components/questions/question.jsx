@@ -30,7 +30,7 @@ class Question extends React.Component {
             image: images[Math.floor(Math.random()*10)], 
             body: '', 
             author_id: '', 
-            question_id: '',
+            question_id: ''
         }; 
 
         this.handleSubmit = this.handleSubmit.bind(this); 
@@ -69,12 +69,25 @@ class Question extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
         const picked = (({ body, author_id, question_id }) => ({ body, author_id, question_id }))(this.state);
-        this.props.createAnswer(picked)
-            .then(() => this.props.history.push(`/questions/${picked.question_id}`))
+        this.props.createAnswer(picked).then(() => {
+            this.props.fetchQuestion(this.props.match.params.questionId)
+                .then(question => this.setState({
+                    question: question.question,
+                    question_id: question.question.id
+                }))
+            this.props.fetchAnswers(this.props.match.params.questionId)
+                .then(answers => this.setState({
+                    answers: Object.values(answers.answers)
+                }))
+            this.props.fetchAllUsers()
+                .then(users => this.setState({
+                    users: Object.values(users.users),
+                    author_id: this.props.userId
+                }))
+        })
     }
 
     render() {
-        console.log(this.state) 
         const images = [
             window.i,
             window.i2,
@@ -216,6 +229,7 @@ class Question extends React.Component {
 
                             <div style={{transform: 'translateX(-80px)'}}>
                             {this.state.answers && this.state.answers.map(answer => 
+
                                 <div key={answer.id}>
                                     <div  style={{display: 'flex', direction: 'row'}}>
                                         <Vote votes={Math.floor(Math.random()*10)}/> 
