@@ -52,7 +52,7 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'pry-rails'
-  gem 'annotate'
+  gem 'annotate', '~> 2.7.1'
   gem 'better_errors'
   gem 'binding_of_caller'
 end
