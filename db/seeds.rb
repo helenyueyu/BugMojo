@@ -28,7 +28,8 @@ require 'faker'
 
 User.delete_all 
 Question.delete_all
-Answer.delete_all 
+Answer.delete_all
+Vote.delete_all  
 
 #############
 ### USERS ###
@@ -75,6 +76,18 @@ user7 = User.create!({
     username: 'soph', 
     email: 'soph@opentable.net', 
     password: 'soph9944'
+})
+
+user8 = User.create!({
+    username: 'ronil', 
+    email: 'ronil@aa.io', 
+    password: 'strokesFan25'
+})
+
+user9 = User.create!({
+    username: 'angela', 
+    email: 'angela@aa.io', 
+    password: 'angliaFord88'
 })
 
 
@@ -174,44 +187,84 @@ question13 = Question.create!({
 ### ANSWERS ###
 ###############
 
-Answer.create!({
+answer1 = Answer.create!({
     body: "As of Git v.1.7.0, you can delete a remote branch.", 
     author_id: user3.id, 
     question_id: question1.id 
 })
 
-Answer.create!({
+answer2 = Answer.create!({
     body: "If you want more detailed explanations, see the next part...", 
     author_id: user4.id, 
     question_id: question1.id 
 })
 
-Answer.create!({
+answer3 = Answer.create!({
     body: "Attempted to give an answer...", 
     author_id: user5.id, 
     question_id: question1.id 
 })
 
-Answer.create!({
+answer4 = Answer.create!({
     body: "The sky is so beautiful today", 
     author_id: user6.id, 
     question_id: question2.id 
 })
 
-Answer.create!({
+answer5 = Answer.create!({
     body: "I am a bit hungry right now", 
     author_id: user6.id, 
     question_id: question3.id 
 })
 
-Answer.create!({
+answer6 = Answer.create!({
     body: "Sushi sounds good", 
     author_id: user7.id, 
     question_id: question4.id 
 })
 
-Answer.create!({
+answer7 = Answer.create!({
     body: "Tacos sound good", 
     author_id: user1.id, 
     question_id: question4.id 
+})
+
+
+#############
+### VOTES ###
+#############
+
+Vote.create!({
+    value: 1, 
+    user_id: User.find_by(email: "ronil@aa.io").id, 
+    voteable_id: question1.id, 
+    voteable_type: 'Question'
+})
+
+Vote.create!({
+    value: -1, 
+    user_id: User.find_by(email: "angela@aa.io").id, 
+    voteable_id: answer3.id, 
+    voteable_type: 'Answer'
+})
+
+Vote.create!({
+    value: -1, 
+    user_id: User.find_by(email: "ronil@aa.io").id, 
+    voteable_id: answer3.id, 
+    voteable_type: 'Answer'
+})
+
+Vote.create!({
+    value: 1, 
+    user_id: User.find_by(email: "ronil@aa.io").id, 
+    voteable_id: answer5.id, 
+    voteable_type: 'Answer'
+})
+
+Vote.create!({
+    value: 1, 
+    user_id: User.find_by(email: "angela@aa.io").id, 
+    voteable_id: answer5.id, 
+    voteable_type: 'Answer'
 })
