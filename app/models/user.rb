@@ -28,7 +28,17 @@ class User < ApplicationRecord
     has_many :answers, 
         class_name: :Answer, 
         primary_key: :id, 
-        foreign_key: :author_id 
+        foreign_key: :author_id
+
+    has_many :upvoted_questions, 
+        through: :questions, 
+        source: :votes, 
+        dependent: :destroy 
+
+    has_many :upvoted_answers, 
+        through: :answers, 
+        source: :votes, 
+        dependent: :destroy 
 
     def self.find_by_credentials(email, password)
         user = User.find_by(email: email) 

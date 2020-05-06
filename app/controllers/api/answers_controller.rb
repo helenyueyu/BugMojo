@@ -7,11 +7,7 @@ class Api::AnswersController < ApplicationController
     def create 
         @answer = Answer.new(answer_params)
         if @answer.save 
-            
-            # @question = Question.find(@answer.question_id) 
-            # @answers = @question.answers 
             render :show
-            # render "api/questions/show"
         else
             render json: @answer.errors.full_messages, status: 422
         end
