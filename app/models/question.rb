@@ -22,7 +22,8 @@ class Question < ApplicationRecord
     has_many :answers, 
         class_name: :Answer, 
         primary_key: :id, 
-        foreign_key: :question_id
+        foreign_key: :question_id, 
+        dependent: :destroy 
 
     has_many :votes, 
         as: :voteable, 

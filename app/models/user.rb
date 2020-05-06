@@ -23,12 +23,14 @@ class User < ApplicationRecord
     has_many :questions, 
         class_name: :Question, 
         primary_key: :id, 
-        foreign_key: :author_id
+        foreign_key: :author_id, 
+        dependent: :destroy 
 
     has_many :answers, 
         class_name: :Answer, 
         primary_key: :id, 
-        foreign_key: :author_id
+        foreign_key: :author_id, 
+        dependent: :destroy 
 
     has_many :upvoted_questions, 
         through: :questions, 
