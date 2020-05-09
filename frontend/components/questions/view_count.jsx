@@ -1,5 +1,4 @@
 import React from 'react';
-import './view_count.css'
 
 const ViewCount = ({ count }) => (
     <div className="view_count_box">

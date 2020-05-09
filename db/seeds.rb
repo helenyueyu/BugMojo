@@ -242,6 +242,32 @@ Vote.create!({
 })
 
 Vote.create!({
+    value: 1, 
+    user_id: User.find_by(email: "elliot@aa.io").id, 
+    voteable_id: question1.id, 
+    voteable_type: 'Question'
+})
+
+Vote.create!({
+    value: 1, 
+    user_id: User.find_by(email: "angela@aa.io").id, 
+    voteable_id: question1.id, 
+    voteable_type: 'Question'
+})
+
+Vote.create!({
+    value: -1, 
+    user_id: User.find_by(email: "frank@turo.com").id, 
+    voteable_id: question1.id, 
+    voteable_type: 'Question'
+})
+
+# we should get [3, 1]
+
+
+
+
+Vote.create!({
     value: -1, 
     user_id: User.find_by(email: "angela@aa.io").id, 
     voteable_id: answer3.id, 

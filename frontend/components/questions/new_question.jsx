@@ -1,5 +1,4 @@
 import React from 'react'; 
-import './new_question.css'; 
 
 class NewQuestion extends React.Component {
     constructor(props) {
@@ -69,6 +68,8 @@ class NewQuestion extends React.Component {
     handleSubmit(e) {
         e.preventDefault(); 
         const picked = (({title, body, author_id}) => ({title, body, author_id}))(this.state); 
+        console.log("picked", picked); 
+
         this.props.createQuestion(picked)
             .then(() => this.props.history.push(`/questions`))
     }
@@ -197,8 +198,6 @@ class NewQuestion extends React.Component {
     }
 
     render() {
-        console.log(this.state.title)
-        console.log(this.state.titleError)
         return (
             <div className="new_question_page">
                 <div className="button_header">

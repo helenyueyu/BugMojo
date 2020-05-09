@@ -8,9 +8,11 @@
 #  author_id  :integer          not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#
+
 
 class Question < ApplicationRecord
+    attr_accessor :vote_count 
+
     validates :title, presence: true 
     validates :body, presence: true 
     
@@ -28,4 +30,8 @@ class Question < ApplicationRecord
     has_many :votes, 
         as: :voteable, 
         dependent: :destroy 
+
+    def get_vote_count 
+        votes.where(value: 1).count - votes.where(value: -1).count 
+    end
 end

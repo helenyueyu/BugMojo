@@ -1,5 +1,4 @@
 import React from 'react';
-import './answer_count.css'
 
 const AnswerCount = ({ count }) => (
     <div className={count > 0 ? "answer_count_box" : "answer_count_box_none"}>

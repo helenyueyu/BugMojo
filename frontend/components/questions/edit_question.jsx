@@ -1,5 +1,4 @@
 import React from 'react';
-import './edit_question.css';
 import Sidebar from './sidebar'; 
 import { Link } from 'react-router-dom'; 
 

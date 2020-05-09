@@ -5,9 +5,6 @@ import Vote from './vote';
 import { Link } from 'react-router-dom'; 
 import moment from 'moment'; 
 
-import './question.css'; 
-import { inherits } from 'util';
-
 class Question extends React.Component {
     constructor(props) {
         super(props); 
@@ -88,6 +85,8 @@ class Question extends React.Component {
     }
 
     render() {
+        console.log(this.state.question)
+
         const images = [
             window.i,
             window.i2,
@@ -123,7 +122,7 @@ class Question extends React.Component {
                     <div className="question_aditya">
                         <div style={{ transform: 'translateX(10px)' }}>
                             <Vote 
-                                votes={Math.floor(Math.random() * 100)} />
+                                votes={this.state.question && this.state.question.voteCount} />
                         </div>
                         
 

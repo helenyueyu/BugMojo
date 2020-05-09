@@ -1,5 +1,4 @@
 import React from 'react';
-import './upvote_count.css'
 
 const UpvoteCount = ({count}) => (
     <div className="vote_count_box">

@@ -8,7 +8,6 @@ class Api::QuestionsController < ApplicationController
         if @question.save 
             render :show 
         else
-            puts @question.errors.full_messages 
             render json: @question.errors.full_messages, status: 422
         end
     end
@@ -24,6 +23,8 @@ class Api::QuestionsController < ApplicationController
 
     def show 
         @question = Question.find(params[:id])
+        # debugger 
+        @question.vote_count = @question.get_vote_count 
     end
 
     def destroy 

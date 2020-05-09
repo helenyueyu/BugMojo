@@ -1,5 +1,4 @@
 import React from 'react'; 
-import './meta.css'; 
 
 const Meta = () => (
     <div className="meta_outer">

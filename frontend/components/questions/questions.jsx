@@ -1,7 +1,6 @@
 import React from 'react'; 
 import { Link } from 'react-router-dom'; 
 
-import './questions.css'; 
 import Sidebar from './sidebar'; 
 import Meta from './meta'; 
 import UpvoteCount from './upvote_count'
