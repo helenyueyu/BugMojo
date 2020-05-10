@@ -1,6 +1,9 @@
 class Api::QuestionsController < ApplicationController
     def index 
         @questions = Question.all
+        @questions.each do |question|
+            question.vote_count = question.get_vote_count 
+        end
     end
 
     def create 
@@ -23,7 +26,6 @@ class Api::QuestionsController < ApplicationController
 
     def show 
         @question = Question.find(params[:id])
-        # debugger 
         @question.vote_count = @question.get_vote_count 
     end
 

@@ -13,23 +13,6 @@ class Questions extends React.Component {
     constructor(props) {
         super(props); 
         this.search = this.search.bind(this); 
-        // this.state = {
-        //     randoms: [
-        //         ['git', 'git-branch', 'git-remote'], 
-        //         ['git', 'version-control', 'git-commit', 'undo'], 
-        //         ['git', 'git-pull', 'git-fetch'], 
-        //         ['html', 'css', 'css3', 'flexbox'], 
-        //         ['jquery', 'javascript', 'dom', 'visibility'], 
-        //         ['json', 'comments'], 
-        //         ['git', 'git-branch', 'git-merge'], 
-        //         ['python', 'shell', 'command', 'subprocess', 'external'], 
-        //         ['javascript', 'scope', 'ecmascript-6', 'var', 'let'], 
-        //         ['javascript', 'guid', 'uid'], 
-        //         ['python', 'sorting', 'dictionary'], 
-        //         ['git', 'git-submodules'], 
-        //         ['search', 'logging', 'grep', 'command-line-interface']
-        //     ]
-        // }
     }
     componentDidMount() {
         this.props.fetchAllQuestions()
@@ -61,7 +44,7 @@ class Questions extends React.Component {
                             <Link to={`/questions/${question.id}`}
                                 key={question.id}
                                 className="questions_list_item">
-                                <UpvoteCount count={Math.floor(Math.random()*10)}/>
+                                <UpvoteCount count={question.voteCount}/>
                                 <AnswerCount count={Math.floor(Math.random()*3)}/>
                                 <ViewCount count={Math.floor(Math.random()*50)}/>
                                 <div className="questions_list_item_right">
