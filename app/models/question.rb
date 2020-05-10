@@ -11,7 +11,15 @@
 
 
 class Question < ApplicationRecord
+    is_impressionable 
+
+    def impressionist_count
+        impressions.size
+    end
+
     attr_accessor :vote_count 
+    attr_accessor :view_count
+    attr_accessor :answer_count 
 
     validates :title, presence: true 
     validates :body, presence: true 

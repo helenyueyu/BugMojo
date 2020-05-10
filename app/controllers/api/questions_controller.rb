@@ -1,8 +1,12 @@
 class Api::QuestionsController < ApplicationController
+    impressionist actions: [:index, :show]
+    
     def index 
         @questions = Question.all
         @questions.each do |question|
             question.vote_count = question.get_vote_count 
+            question.answer_count = question.answers.count 
+            question.view_count = question.impressionist_count
         end
     end
 
@@ -26,7 +30,8 @@ class Api::QuestionsController < ApplicationController
 
     def show 
         @question = Question.find(params[:id])
-        @question.vote_count = @question.get_vote_count 
+        @question.vote_count = @question.get_vote_count
+        @question.view_count = @question.impressionist_count  
     end
 
     def destroy 

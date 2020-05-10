@@ -2,6 +2,14 @@ json.key_format! camelize: :lower
 
 @questions.each do |question|
     json.set! question.id do 
-        json.extract! question, :id, :title, :body, :author_id, :vote_count, :created_at, :updated_at
+        json.extract! question, :id, 
+                                :title, 
+                                :body, 
+                                :author_id, 
+                                :vote_count, 
+                                :answer_count, 
+                                :view_count, 
+                                :created_at, 
+                                :updated_at
     end 
 end

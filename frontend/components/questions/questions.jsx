@@ -45,8 +45,8 @@ class Questions extends React.Component {
                                 key={question.id}
                                 className="questions_list_item">
                                 <UpvoteCount count={question.voteCount}/>
-                                <AnswerCount count={Math.floor(Math.random()*3)}/>
-                                <ViewCount count={Math.floor(Math.random()*50)}/>
+                                <AnswerCount count={question.answerCount}/>
+                                <ViewCount count={question.viewCount}/>
                                 <div className="questions_list_item_right">
                                     <div className="question_list_item_title">
                                         {question.title}
