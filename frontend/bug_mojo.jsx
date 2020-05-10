@@ -4,9 +4,9 @@ import ReactDOM from 'react-dom';
 import configureStore from './store/store';
 import Root from './components/root';
 import { login, logout, signup } from './actions/sessionActions';
-import { fetchAllQuestions, fetchQuestion } from './actions/questionActions';
+import { fetchAllQuestions, fetchQuestion, createQuestion } from './actions/questionActions';
 import { fetchAnswers, createAnswer } from './actions/answerActions';
-
+import { createVote, deleteVote } from './actions/voteActions'; 
 
 document.addEventListener('DOMContentLoaded', () => {
     const root = document.getElementById('root');
@@ -28,10 +28,21 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Testing purposes 
+    /* question:
+    {
+    title: "Chocolate is the best thing ever - fight me?",
+    body: "Steak is also pretty good.",
+    author_id: 37
+    }
+    */
+    window.createQuestion = createQuestion; 
     window.fetchAllQuestions = fetchAllQuestions;
     window.fetchQuestion = fetchQuestion;
     window.fetchAnswers = fetchAnswers;
     window.createAnswer = createAnswer;
+
+    window.createVote = createVote; 
+    window.deleteVote = deleteVote; 
 
     window.store = store;
     window.getState = store.getState;

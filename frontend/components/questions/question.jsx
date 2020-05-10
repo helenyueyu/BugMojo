@@ -8,23 +8,12 @@ import moment from 'moment';
 class Question extends React.Component {
     constructor(props) {
         super(props); 
-        const images = [
-            window.i, 
-            window.i2, 
-            window.i3, 
-            window.i4, 
-            window.i5, 
-            window.i6, 
-            window.i7, 
-            window.i8, 
-            window.i9, 
-            window.i10
-        ]
+        const testImage = window.i; 
         this.state = {
             question: this.props.question, 
             answers: [], 
             users: this.props.users, 
-            image: images[Math.floor(Math.random()*10)], 
+            image: testImage, 
             body: '', 
             author_id: '', 
             question_id: ''
@@ -87,18 +76,7 @@ class Question extends React.Component {
     render() {
         console.log(this.state.question)
 
-        const images = [
-            window.i,
-            window.i2,
-            window.i3,
-            window.i4,
-            window.i5,
-            window.i6,
-            window.i7,
-            window.i8,
-            window.i9,
-            window.i10
-        ]
+        const image = window.i; 
         const random1 = Math.floor(Math.random() * 10); 
         const random2 = Math.floor(Math.random() * 10); 
         const random3 = Math.floor(Math.random() * 10); 
@@ -109,6 +87,7 @@ class Question extends React.Component {
                 <div className="overall_div">
                     <div className="question_title">
                         <div>{this.props.question && this.props.question.title}</div>
+
                         <div>
                             <Link to="/questions/new">
                                 <button className="question_ask_question">Ask Question</button>
@@ -250,7 +229,7 @@ class Question extends React.Component {
                                             asked {moment(answer.createdAt).fromNow()}
                                         </div>
                                         <div style={{ display: 'flex', flexDirection: 'row' }}>
-                                            <img style={{ marginRight: '0.2rem', marginTop: '0.2rem', marginRight: '0.5rem' }} width="35px" height="35px" src={images[Math.floor(Math.random() * 10)]} alt="identicon" />
+                                            <img style={{ marginRight: '0.2rem', marginTop: '0.2rem', marginRight: '0.5rem' }} width="35px" height="35px" src={image} alt="identicon" />
                                             <div style={{ display: 'flex', flexDirection: 'column' }}>
                                                 <div style={{ color: '#0076cb', fontSize: '0.9rem' }}>{this.state.users && this.state.users[answer.authorId - 1] && this.state.users[answer.authorId - 1].username}</div>
                                                 <div style={{ display: 'flex', flexDirection: 'row', transform: 'translateY(-3px)', fontSize: '0.8rem' }}>
