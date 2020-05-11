@@ -262,10 +262,6 @@ Vote.create!({
     voteable_type: 'Question'
 })
 
-# we should get [3, 1]
-
-
-
 
 Vote.create!({
     value: -1, 

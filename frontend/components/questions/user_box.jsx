@@ -2,16 +2,26 @@ import React from 'react';
 import moment from 'moment';
 
 
-class AskeeBox extends React.Component {
+class UserBox extends React.Component {
     constructor(props) {
         super(props);
     }
 
+    renderBadge(medal, number) {
+        return (
+            <>
+                <div className={`${medal}_badge`}><span>&#8226;</span></div>
+                <div style={{ color: 'gray' }}>{number}</div>
+            </>
+        )
+    }
+
     render() {
-        if (this.props.question && this.props.image) {
+        if (this.props.item && this.props.image) {
+            console.log(this.props.item)
             return (
-                <div className="askee_box">
-                    <div className="askee_box_time">asked {moment(this.props.question.createdAt).fromNow()}</div>
+                <div className={this.props.type === "question" ? "askee_box" : "answeree_box"}>
+                    <div className="askee_box_time">asked {moment(this.props.item.createdAt).fromNow()}</div>
                     <div className="askee_box_identicon_username_flex">
                         <img className="askee_box_identicon" src={this.props.image} alt="identicon" />
                         <div className="askee_box_username_medals_flex">
@@ -19,19 +29,7 @@ class AskeeBox extends React.Component {
                             <div className="medal_row_list">
 
                                 <div className="reputation">{15}</div>
-                                <>
-                                    <div className="gold_badge"><span>&#8226;</span></div>
-                                    <div style={{ color: 'gray' }}>{34}</div>
-                                </>
-                                <>
-                                    <div className="silver_badge"><span>&#8226;</span></div>
-                                    <div style={{ color: 'gray' }}>{33}</div>
-                                </>
-
-                                <>
-                                    <div className="bronze_badge"><span>&#8226;</span></div>
-                                    <div style={{ color: 'gray' }}>{35}</div>
-                                </>
+                                {[["gold", 7], ["silver", 12], ["bronze", 29]].map(badge => this.renderBadge(badge[0], badge[1]))}
                             </div>
                         </div>
                     </div>
@@ -44,4 +42,4 @@ class AskeeBox extends React.Component {
     }
 }
 
-export default AskeeBox; 
+export default UserBox; 

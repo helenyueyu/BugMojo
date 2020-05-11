@@ -3,9 +3,8 @@ import { Link } from 'react-router-dom';
 
 import Sidebar from './sidebar'; 
 import Meta from './meta'; 
-import UpvoteCount from './upvote_count'
-import AnswerCount from './answer_count'
-import ViewCount from './view_count' 
+
+import Count from './count'; 
 import moment from 'moment'; 
 
 
@@ -18,6 +17,8 @@ class Questions extends React.Component {
         this.props.fetchAllQuestions()
         this.props.fetchAllUsers() 
     }
+
+
 
     search(searchId, arr) {
         for (let i = 0; i < arr.length; i++) {
@@ -44,17 +45,13 @@ class Questions extends React.Component {
                             <Link to={`/questions/${question.id}`}
                                 key={question.id}
                                 className="questions_list_item">
-                                <UpvoteCount count={question.voteCount}/>
-                                <AnswerCount count={question.answerCount}/>
-                                <ViewCount count={question.viewCount}/>
+                                    <Count count={question.voteCount} type="vote" />
+                                    <Count count={question.answerCount} type="answer" />
+                                    <Count count={question.viewCount} type="view" />
+
                                 <div className="questions_list_item_right">
                                     <div className="question_list_item_title">
                                         {question.title}
-                                    </div>
-                                    <div className="middle_info">
-                                        {/* {this.state.randoms[idx].map(random => 
-                                            <span key={Math.random()} className="tag">{random}</span>
-                                        )} */}
                                     </div>
                                     <div className="bottom_info">
                                         asked {moment(question.createdAt).fromNow()}

@@ -30,7 +30,7 @@
     height: 200vh; 
     overflow-x: hidden; 
 }
-.overall_div {
+.non_sidebar_div {
     width: 82%;  
     transform: translateX(150px); 
 }
@@ -182,4 +182,10 @@
 
 .answeree_form {
     transform: translateX(30px); 
+}
+
+.answer_count {
+    font-size: 1.3rem; 
+    transform: translateX(-50px); 
+    margin-top: 8rem; 
 }

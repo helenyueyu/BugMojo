@@ -35,8 +35,6 @@ class EditQuestion extends React.Component {
     }
 
     render() {
-        // console.log(this.props.userId)
-        // console.log(this.state)
         return (
             <div className="edit_question_page">
                 <Sidebar/>
