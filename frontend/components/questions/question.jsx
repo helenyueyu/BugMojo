@@ -5,6 +5,8 @@ import Vote from './vote';
 import { Link } from 'react-router-dom'; 
 import moment from 'moment'; 
 
+import AskeeBox from './askee_box'; 
+
 class Question extends React.Component {
     constructor(props) {
         super(props); 
@@ -130,58 +132,7 @@ class Question extends React.Component {
                             </div>
                         
                             
-                            {/* <div className="askee_box">
-                                <div style={{display: 'block', color: 'gray', fontSize: '0.8rem'}}>
-                                    asked {this.state.question && moment(this.state.question.createdAt).fromNow()}
-                                </div>
-                                <div style={{display: 'flex', flexDirection: 'row'}}>
-                                    <img style={{marginRight: '0.2rem', marginTop: '0.2rem', marginRight: '0.5rem'}} width="35px" height="35px" src={this.state.image} alt="identicon" />
-                                    <div style={{display: 'flex', flexDirection: 'column'}}>
-                                        <div style={{ color: '#0076cb', fontSize: '0.9rem'}}>{this.state.question && this.state.question.authorId && this.state.users && this.state.users[this.state.question.authorId - 1] && this.state.users[this.state.question.authorId - 1].username}</div>
-                                        <div style={{ display: 'flex', flexDirection: 'row', transform: 'translateY(-3px)', fontSize: '0.8rem' }}>
-                                            
-                                            <div style={{color: 'gray', fontWeight: 'bold'}}>{Math.floor(Math.random() * 10)}</div> 
-                                            
-                                            {random1 === 0 ? 
-                                            null 
-                                            :
-                                            <>
-                                            <div style={{ marginLeft: '0.45rem', marginRight: '0.2rem', transform: 'translateY(-6px)', fontSize: '1.3rem', color: '#ffcf0f', opacity: 0.8}}>
-                                                <span>&#8226;</span>
-                                            </div>
-                                            <div style={{ color: 'gray' }}>{random1}</div>
-                                            </>
-                                            }
-
-                                            
-
-                                            {random2 === 0 ? 
-                                            null: 
-                                            <>
-                                            <div style={{ marginLeft: '0.45rem', marginRight: '0.2rem', transform: 'translateY(-6px)', fontSize: '1.3rem', color: '#A8A8A8', opacity: 0.8}}>
-                                                <span>&#8226;</span>
-                                            </div>
-                                            <div style={{ color: 'gray' }}>{random2}</div>
-                                            </>
-                                            }
-
-                                            
-
-                                            {random3 === 0 ? 
-                                            null: 
-                                            <>
-                                            <div style={{ marginLeft: '0.45rem', marginRight: '0.2rem', transform: 'translateY(-6px)', fontSize: '1.3rem', color: '#965A38', opacity: 0.8 }}>
-                                                <span>&#8226;</span>
-                                            </div>
-                                            <div style={{ color: 'gray' }}>{random3}</div>
-                                            </>
-                                            }
-                                            
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div> */}
+                           <AskeeBox question={this.state.question} image={this.state.image} />
 
                             <div style={{fontSize: '1.3rem', transform: 'translateX(-50px)', marginTop: '8rem'}}>
                                 {this.state.answers && this.state.answers.length} Answer{this.state.answers && this.state.answers.length === 1 ? "" : "s"}
