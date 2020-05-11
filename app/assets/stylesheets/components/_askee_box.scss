@@ -1,0 +1,78 @@
+.askee_box {
+    float: right; 
+    background-color: #e1edf5; 
+    padding-left: 0.4rem; 
+    padding-right: 0.4rem; 
+    padding-top: 0.3rem; 
+    padding-bottom: 0.3rem; 
+    width: 175px; 
+    height: 65px; 
+}
+
+.askee_box_time {
+    display: block; 
+    color: grey; 
+    font-size: 0.8rem; 
+}
+
+.gold_badge {
+    margin-left: 0.45rem; 
+    margin-right: 0.2rem; 
+    transform: translateY(-6px); 
+    font-size: 1.3rem; 
+    color: #FFCF0F; 
+    opacity: 0.8; 
+}
+
+.silver_badge {
+    margin-left: 0.45rem; 
+    margin-right: 0.2rem; 
+    transform: translateY(-6px); 
+    font-size: 1.3rem; 
+    color: #A8A8A8; 
+    opacity: 0.8; 
+}
+
+.bronze_badge {
+    margin-left: 0.45rem; 
+    margin-right: 0.2rem; 
+    transform: translateY(-6px); 
+    font-size: 1.3rem; 
+    color: #965A38; 
+    opacity: 0.8; 
+}
+
+.reputation {
+    color: grey; 
+    font-weight: bold; 
+}
+
+.medal_row_list {
+    display: flex; 
+    flex-direction: row; 
+    transform: translateY(-3px); 
+    font-size: 0.8rem; 
+}
+.askee_username {
+    // color: #0076CB; 
+    color: $light_blue; 
+    font-size: 0.9rem; 
+}
+
+.askee_box_identicon {
+    margin-top: 0.2rem; 
+    margin-right: 0.5rem; 
+    width: 35px; 
+    height: 35px; 
+}
+
+.askee_box_identicon_username_flex {
+    display: flex; 
+    flex-direction: row; 
+}
+
+.askee_box_username_medals_flex {
+    display: flex; 
+    flex-direction: column; 
+}
+
