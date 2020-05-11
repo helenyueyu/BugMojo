@@ -1,5 +1,7 @@
 import React from 'react'; 
 
+import NewQuestionTitle from './new_question_title'; 
+
 class NewQuestion extends React.Component {
     constructor(props) {
         super(props); 
@@ -29,6 +31,9 @@ class NewQuestion extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this); 
 
         this.setTitleRef = this.setTitleRef.bind(this);
+        this.handleTitle = this.handleTitle.bind(this); 
+        this.displayDescription = this.displayDescription.bind(this); 
+        
 
         this.handleClickOutsideTitle = this.handleClickOutsideTitle.bind(this); 
     }
@@ -211,81 +216,13 @@ class NewQuestion extends React.Component {
 
                 <form className="question_form" onSubmit={this.handleSubmit}>
                     
-                    {this.state.displayTitle ? 
+                    <NewQuestionTitle 
+                            displayTitle={this.state.displayTitle} 
+                            titleError={this.state.titleError}
 
-                    <div className="carousel_body">
-                        <h1 className="carousel_header">What's your question title?</h1>
-                        <h2 className="carousel_subheader">Your title helps people quickly understand what your question is about so they can answer it.</h2>
-
-                        <div className="carousel_example_1">
-                            <div className="hypothetical">Imagine you’re asking a question to another developer.</div>
-                                <div className="hypothetical_example">For example: </div>
-                            <ul>
-                                <div className="separator_top">
-                                        <li><i className="fas fa-check carousel_check"></i>
-                                            “Is there an R function for finding the index of an element in a vector?”
-                                        </li>
-                                        <li><i className="fas fa-times carousel_x"></i>
-                                            “Please help with R”
-                                        </li>
-                                </div>
-
-                                <div className="separator_bottom">
-                                        <li><i className="fas fa-check carousel_check"></i>
-                                            “How to fix ‘Headers already sent’ error in PHP”
-                                        </li>
-                                        <li><i className="fas fa-times carousel_x"></i>
-                                            “PHP error: Why isn’t this working?”
-                                        </li>
-                                </div>
-                            </ul>
-                        </div>
-                            <label><div className="carousel_question_title">Title</div>
-
-                            {this.state.titleError ? 
-                                    
-                                    <label>
-                                <input type="text"
-                                    className="title_input input_field_error"
-                                    value={this.state.title}
-                                        placeholder="What's your programming question? Be specific."
-                                    onChange={(e) => this.handleTitle(e)}
-                                    ref={this.setTitleRef} />
-
-
-                                <div className="inline_errors">
-                                    <div className="input_error_message">{this.state.titleError}</div>
-                                    <i className="fas fa-exclamation-circle error_icon"></i>
-                                </div>
-                                </label>
-                                :
-                                <input type="text"
-                                    className="title_input"
-                                    value={this.state.title}
-                                    placeholder="What's your programming question? Be specific."
-                                    onChange={(e) => this.handleTitle(e)}
-                                    ref={this.setTitleRef} />}
-
-                            </label>
-
-                            <div className="prev_next_buttons">
-                                {this.state.titleError ? 
-                                
-                                <button className="disabled_next_button"
-                                    onClick={(e) => this.displayDescription(e)}
-                                    disabled={true}>
-                                    Next
-                                </button>
-                                : 
-                                <button className="next_button"
-                                        onClick={(e) => this.displayDescription(e)}>
-                                        Next
-                                </button>
-                                }
-                            </div>
-                    </div>
-
-                    : null }
+                            setTitleRef={this.setTitleRef} 
+                            handleTitle={this.handleTitle}
+                            displayDescription={this.displayDescription} />
 
                     {this.state.displayDescription ? 
 
@@ -303,13 +240,9 @@ class NewQuestion extends React.Component {
 
                                 <div className="guided_mode">Guided Mode</div>
                                 <div className="guided_mode_helpers">
-                                    <span className="guided_dropdown_link">Links</span>
-                                    <span className="guided_dropdown_link">Images</span>
-                                    <span className="guided_dropdown_link">Styling/Headers</span>
-                                    <span className="guided_dropdown_link">Lists</span>
-                                    <span className="guided_dropdown_link">Blockquotes</span>
-                                    <span className="guided_dropdown_link">Code</span>
-                                    <span className="guided_dropdown_link">HTML</span>
+                                    {["Links", "Images", "Styling/Headers", "Lists", 
+                                        "Blockquotes", "Code", "HTML"].map(type => <span className="guided_dropdown_link">{type}</span>)}
+                                    
                                 </div>
                                 <div className={this.state.text1 ? "big_div2" : "big_div"}>
                                 <div className="dr1"
