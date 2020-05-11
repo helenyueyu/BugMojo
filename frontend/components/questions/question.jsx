@@ -6,6 +6,8 @@ import { Link } from 'react-router-dom';
 import moment from 'moment'; 
 
 import AskeeBox from './askee_box'; 
+import AnswereeBox from './answeree_box'; 
+
 import QuestionSideBar from './question_side_bar'; 
 import AnswereeForm from './answeree_form'; 
 
@@ -151,44 +153,8 @@ class Question extends React.Component {
 
                                 <hr className="horizontal_rule_answer" />
 
+                                    <AnswereeBox answer={answer} image={this.state.image} />
 
-                                    <div className="answeree_box">
-                                        <div style={{ display: 'block', color: 'gray', fontSize: '0.8rem' }}>
-                                            asked {moment(answer.createdAt).fromNow()}
-                                        </div>
-                                        <div style={{ display: 'flex', flexDirection: 'row' }}>
-                                            <img style={{ marginRight: '0.2rem', marginTop: '0.2rem', marginRight: '0.5rem' }} width="35px" height="35px" src={image} alt="identicon" />
-                                            <div style={{ display: 'flex', flexDirection: 'column' }}>
-                                                <div style={{ color: '#0076cb', fontSize: '0.9rem' }}>{this.state.users && this.state.users[answer.authorId - 1] && this.state.users[answer.authorId - 1].username}</div>
-                                                <div style={{ display: 'flex', flexDirection: 'row', transform: 'translateY(-3px)', fontSize: '0.8rem' }}>
-
-                                                    <div style={{ color: 'gray', fontWeight: 'bold' }}>{5}</div>
-
-                                            
-                                                        <>
-                                                            <div className="gold_badge"><span>&#8226;</span></div>
-                                                            <div style={{ color: 'gray' }}>{5}</div>
-                                                        </>
-
-
-                                                        <>
-                                                            <div className="silver_badge"><span>&#8226;</span></div>
-                                                            <div style={{ color: 'gray' }}>{5}</div>
-                                                        </>
-
-                                                        <>
-                                                            <div className="bronze_badge">
-                                                                <span>&#8226;</span>
-                                                            </div>
-                                                            <div style={{ color: 'gray' }}>{5}</div>
-                                                        </>
-
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
                             
                                 </div>
                             )}
