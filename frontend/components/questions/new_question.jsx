@@ -1,6 +1,7 @@
 import React from 'react'; 
 
 import NewQuestionTitle from './new_question_title'; 
+import ModeExample from '../examples/mode_example'; 
 
 class NewQuestion extends React.Component {
     constructor(props) {
@@ -25,7 +26,16 @@ class NewQuestion extends React.Component {
             text3: false, 
             text4: false, 
             titleError: '', 
-            bodyError: 'Body cannot be blank.'
+            bodyError: 'Body cannot be blank.', 
+            goodExample1: "I'm setting up a new server, and want to support UTF- 8 fully in my web application.Where do I need to set the encoding / charsets?", 
+            goodExample2: "This is for a new Linux server, running MySQL 5, PHP 5 and Apache 2. In the past, I’ve tried on existing servers and always seem to end up having to fall back to ISO- 8859 - 1.", 
+            goodExample3: "Use code fences and syntax highlighting to format your code properly and provide context", 
+            goodExample4: "I expect the output of 5/2 to be 2.5, but the actual output is 2.", 
+            badExample1: "I want to support UTF-8 fully in my web application.", 
+            badExample2: "This for a new server. In the past, I’ve tried on existing servers.", 
+            badExample3a: "Don’t paste an entire file", 
+            badExample3b: "Don't paste just one line", 
+            badExample4: "The output is 2.5, but that is wrong."
         }
 
         this.handleSubmit = this.handleSubmit.bind(this); 
@@ -148,6 +158,17 @@ class NewQuestion extends React.Component {
         })
     }
 
+    toggleDropDown(e, idx) {
+        let variableKey = dr + `${idx}`; 
+
+        let {variableKey} = this.state; 
+
+        this.setState({
+            [dr + `${idx}`]: !variableKey
+        })
+    }
+
+
     toggleDropDown1(e) {
         this.setState({
             dr1: !this.state.dr1
@@ -246,7 +267,7 @@ class NewQuestion extends React.Component {
                                 </div>
                                 <div className={this.state.text1 ? "big_div2" : "big_div"}>
                                 <div className="dr1"
-                                        onClick={(e) => this.toggleDropDown1(e)}>1. Summarize the problem
+                                        onClick={(e) => this.toggleDropDown(e, 1)}>1. Summarize the problem
                                         
                                         <span className="plus_minus">{this.state.dr1 ? <i className="fas fa-minus"></i> : <i className="fas fa-plus"></i>}</span>
                                         
@@ -265,14 +286,8 @@ class NewQuestion extends React.Component {
 
                                                 <div className="header_detail">Include details about your goals and problem</div>
 
-                                            <div className="separator_bottom">
-                                                <li><i className="fas fa-check carousel_check"></i>
-                                                    “I’m setting up a new server, and want to support UTF-8 fully in my web application. Where do I need to set the encoding/charsets?”
-                                            </li>
-                                                <li><i className="fas fa-times carousel_x"></i>
-                                                    “I want to support UTF-8 fully in my web application.”
-                                        </li>
-                                            </div>
+                                            <ModeExample goodExample={this.state.goodExample1} badExample={this.state.badExample1}/>
+                                    
 
                                             </div>
                                 </div>   
@@ -300,17 +315,12 @@ class NewQuestion extends React.Component {
 
                                         <div className="input_below_example">
 
-                                                <div className="header_detail">Include any research you've conducted</div>
+                                            <div className="header_detail">Include any research you've conducted</div>
 
-                                            <div className="separator_bottom">
-                                                <li><i className="fas fa-check carousel_check"></i>
-                                                   “This is for a new Linux server, running MySQL 5, PHP 5 and Apache 2. In the past, I’ve tried on existing servers and always seem to end up having to fall back to ISO-8859-1.”
-                                            </li>
-                                                <li><i className="fas fa-times carousel_x"></i>
-                                                    “This for a new server. In the past, I’ve tried on existing servers.”
-                                        </li>
-                                            </div>
 
+                                            <ModeExample 
+                                                goodExample={this.state.goodExample2} 
+                                                badExample={this.state.badExample2} />
                                         </div>
                                     </div>
                                     :
@@ -336,20 +346,12 @@ class NewQuestion extends React.Component {
 
                                         <div className="input_below_example">
 
-                                                <div className="header_detail">Share the minimum amount of code others need to reproduce your problem (also called a minimal, reproducible example)</div>
+                                            <div className="header_detail">Share the minimum amount of code others need to reproduce your problem (also called a minimal, reproducible example)</div>
 
-                                            <div className="separator_bottom">
-                                                <li><i className="fas fa-check carousel_check"></i>
-                                                    Use code fences and syntax highlighting to format your code properly and provide context
-                                            </li>
-                                                    <li><i className="fas fa-times carousel_x"></i>
-                                                        Don’t paste an entire file
-                                        </li>
-                                            
-                                                <li><i className="fas fa-times carousel_x"></i>
-                                                    Don't paste just one line
-                                        </li>
-                                            </div>
+                                            <ModeExample 
+                                                goodExample={this.state.goodExample3} 
+                                                badExample={this.state.badExample3a} 
+                                                badExample2={this.state.badExample3b}/>
 
                                         </div>
                                     </div>
@@ -377,15 +379,9 @@ class NewQuestion extends React.Component {
                                         <div className="input_below_example">
 
                                 
-
-                                            <div className="separator_bottom">
-                                                <li><i className="fas fa-check carousel_check"></i>
-                                                    “I expect the output of 5/2 to be 2.5, but the actual output is 2.”
-                                            </li>
-                                                <li><i className="fas fa-times carousel_x"></i>
-                                                    “The output is 2.5, but that is wrong.”
-                                        </li>
-                                            </div>
+                                            <ModeExample
+                                                goodExample={this.state.goodExample4}
+                                                badExample={this.state.badExample4}/>
 
                                         </div>
                                     </div>
