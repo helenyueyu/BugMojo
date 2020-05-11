@@ -81,8 +81,6 @@ class Question extends React.Component {
     }
 
     render() {
-        console.log(this.state.question)
-
         const image = window.i; 
 
         return (
