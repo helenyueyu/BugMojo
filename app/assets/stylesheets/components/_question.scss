@@ -2,6 +2,27 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+
+
+.horizontal_rule_answer {
+    margin-top: 0rem; 
+    margin-left: 2rem; 
+    border-top: solid 1px lightgrey; 
+    background-color: transparent; 
+    border-left: none; 
+    border-right: none; 
+    border-bottom: none; 
+}
+
+.horizontal_rule {
+    transform: translateX(-50px); 
+    margin-top: 0.5rem; 
+    border-top: solid 1px lightgrey; 
+    background-color: transparent; 
+    border-left: none; 
+    border-right: none; 
+    border-bottom: none; 
+}
 .question_page {
     display: flex; 
     flex-direction: row; 
