@@ -100,8 +100,7 @@ class Question extends React.Component {
 
                     <div className="question_aditya">
                         <div style={{ transform: 'translateX(10px)' }}>
-                            <Vote 
-                                votes={this.state.question && this.state.question.voteCount} />
+                            <Vote votes={this.state.question && this.state.question.voteCount} />
                         </div>
                         
 
@@ -114,10 +113,7 @@ class Question extends React.Component {
                                 {
                                     this.props.question && this.props.userId === this.props.question.authorId && 
                                     <Link to={`/questions/${this.props.match.params.questionId}/edit`} 
-                                    style={{
-                                        color: 'gray',
-                                        textDecoration: 'none'
-                                    }}>
+                                    className="edit_button">
                                         edit
                                     </Link>
                                 }
@@ -127,19 +123,14 @@ class Question extends React.Component {
                                         onClick={() => 
                                         this.props.deleteQuestion(this.props.question)
                                         .then(() => this.props.history.push('/questions'))}
-                                    style={{
-                                        color: 'darkRed', 
-                                        border: 'none', 
-                                        fontFamily: 'Arial', 
-                                        fontSize: '0.9rem'
-                                    }}>
+                                    >
                                         delete
                                     </button>
                                 }
                             </div>
                         
                             
-                            <div className="askee_box">
+                            {/* <div className="askee_box">
                                 <div style={{display: 'block', color: 'gray', fontSize: '0.8rem'}}>
                                     asked {this.state.question && moment(this.state.question.createdAt).fromNow()}
                                 </div>
@@ -190,7 +181,7 @@ class Question extends React.Component {
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> */}
 
                             <div style={{fontSize: '1.3rem', transform: 'translateX(-50px)', marginTop: '8rem'}}>
                                 {this.state.answers && this.state.answers.length} Answer{this.state.answers && this.state.answers.length === 1 ? "" : "s"}
