@@ -53,6 +53,11 @@
     margin-left: 2.5rem; 
 }
 
+.question_edit_delete_buttons {
+    margin-top: 1.5rem; 
+    display: block; 
+}
+
 .question_ask_question {
     transform: translateY(-7px); 
     background-color: #0094ff; 
@@ -76,7 +81,7 @@
     cursor: pointer; 
 }
 
-.question_aditya {
+.question {
     display: flex; 
     flex-direction: row; 
     transform: translateY(60px); 

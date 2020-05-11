@@ -11,10 +11,10 @@ class Vote extends React.Component {
 
     render() {
         return (
-            <div className="vote_aditya">
-                <div><i className="fas fa-caret-up vote_aditya_up" onClick={this.handleUpClick}></i></div>
+            <div className="vote">
+                <div><i className="fas fa-caret-up vote_up" onClick={this.handleUpClick}></i></div>
                 <div>{this.props.votes}</div>
-                <div><i className="fas fa-caret-down vote_aditya_down" onClick={this.handleDownClick}></i></div>
+                <div><i className="fas fa-caret-down vote_down" onClick={this.handleDownClick}></i></div>
             </div>
         )
     }
