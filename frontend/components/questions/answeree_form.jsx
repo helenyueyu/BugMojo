@@ -24,7 +24,7 @@ class AnswereeForm extends React.Component {
 
                 <div className="review_form_before_submit_answer">
                     {[0, 1, 2, 3].map((iconGroup, idx) => (
-                        <span key={idx} className={`group_${idx}`}>
+                        <span key={idx} className={`group_${idx+1}`}>
                             {this.createIcons(this.state.textareaIcons[idx])}
                         </span>)
                     )}

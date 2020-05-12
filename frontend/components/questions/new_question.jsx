@@ -3,6 +3,8 @@ import React from 'react';
 import NewQuestionTitle from './new_question_title'; 
 import ModeExample from '../examples/mode_example'; 
 
+import Dropdown from './dropdown'; 
+
 class NewQuestion extends React.Component {
     constructor(props) {
         super(props); 
@@ -27,15 +29,36 @@ class NewQuestion extends React.Component {
             text4: false, 
             titleError: '', 
             bodyError: 'Body cannot be blank.', 
-            goodExample1: "I'm setting up a new server, and want to support UTF- 8 fully in my web application.Where do I need to set the encoding / charsets?", 
-            goodExample2: "This is for a new Linux server, running MySQL 5, PHP 5 and Apache 2. In the past, I’ve tried on existing servers and always seem to end up having to fall back to ISO- 8859 - 1.", 
-            goodExample3: "Use code fences and syntax highlighting to format your code properly and provide context", 
-            goodExample4: "I expect the output of 5/2 to be 2.5, but the actual output is 2.", 
-            badExample1: "I want to support UTF-8 fully in my web application.", 
-            badExample2: "This for a new server. In the past, I’ve tried on existing servers.", 
-            badExample3a: "Don’t paste an entire file", 
-            badExample3b: "Don't paste just one line", 
-            badExample4: "The output is 2.5, but that is wrong."
+            goodExamples: [
+                ["I'm setting up a new server, and want to support UTF- 8 fully in my web application.Where do I need to set the encoding / charsets?"],
+                ["This is for a new Linux server, running MySQL 5, PHP 5 and Apache 2. In the past, I’ve tried on existing servers and always seem to end up having to fall back to ISO- 8859 - 1."], 
+                ["Use code fences and syntax highlighting to format your code properly and provide context"], 
+                ["I expect the output of 5/2 to be 2.5, but the actual output is 2."],
+            ], 
+            badExamples: [
+                ["I want to support UTF-8 fully in my web application."], 
+                ["This for a new server. In the past, I’ve tried on existing servers."], 
+                ["Don’t paste an entire file", "The output is 2.5, but that is wrong."], 
+                ["The output is 2.5, but that is wrong."]
+            ], 
+            headers: [
+                "1. Summarize the problem", 
+                "2. Provide background including what you've already tried", 
+                "3. Show some code", 
+                "4. Describe expected and actual results including any error messages"
+            ], 
+            subHeaders: [
+                "Include details about your goals and problem", 
+                "Include any research you've conducted", 
+                "Share the minimum amount of code others need to reproduce your problem (also called a minimal, reproducible example)", 
+                "Share the minimum amount of code others need to reproduce your problem (also called a minimal, reproducible example)"
+            ],
+            textareaIcons: [
+                ["fas fa-bold", "fas fa-italic"],
+                ["fas fa-link", "fas fa-quote-left", "fas fa-code", "far fa-image", "far fa-file-code"],
+                ["fas fa-list-ol", "fas fa-list-ul", "fas fa-stream"],
+                ["fas fa-undo", "fas fa-redo"]
+            ]
         }
 
         this.handleSubmit = this.handleSubmit.bind(this); 
@@ -44,6 +67,9 @@ class NewQuestion extends React.Component {
         this.handleTitle = this.handleTitle.bind(this); 
         this.displayDescription = this.displayDescription.bind(this); 
         
+        this.toggleDropDown = this.toggleDropDown.bind(this); 
+        this.handleSubBody = this.handleSubBody.bind(this); 
+        this.handleText = this.handleText.bind(this); 
 
         this.handleClickOutsideTitle = this.handleClickOutsideTitle.bind(this); 
     }
@@ -58,6 +84,10 @@ class NewQuestion extends React.Component {
 
     setTitleRef(node) {
         this.titleRef = node;
+    }
+
+    createIcons(icons) {
+        return icons.map(icon => <span className="review_icon"><i className={`${icon}`}></i></span>)
     }
 
     handleClickOutsideTitle(event) {
@@ -132,6 +162,20 @@ class NewQuestion extends React.Component {
         })
     }
 
+    toggleDisplay(e, type) {
+        ['displayTitle', 'displayDescription', 'displayReview'].map(name => {
+            if (name.includes(type)) {
+                this.setState({
+                    [name]: true
+                })
+            } else {
+                this.setState({
+                    [name]: false 
+                })
+            }
+        })
+    }
+
     toggleDropDown(e, idx) {
         this.setState({
             [`dr${idx}`]: !this.state[`dr${idx}`]
@@ -154,24 +198,29 @@ class NewQuestion extends React.Component {
     render() {
         return (
             <div className="new_question_page">
+
                 <div className="button_header">
+
                     <button className={this.state.displayTitle ? "button_carousel_selected" : "button_carousel"}
-                        onClick={(e) => this.displayTitle(e)}>Title</button>
+                        onClick={(e) => this.toggleDisplay(e, "Title")}>Title</button>
+
                     <button className={this.state.displayDescription ? "button_carousel_selected" : "button_carousel"}
-                        onClick={(e) => this.displayDescription(e)}>Description</button>
+                        onClick={(e) => this.toggleDisplay(e, "Description")}>Description</button>
+
                     <button className={this.state.displayReview ? "button_carousel_selected" : "button_carousel"}
-                        onClick={(e) => this.displayReview(e)}>Review</button>
+                        onClick={(e) => this.toggleDisplay(e, "Review")}>Review</button>
+
                 </div>
 
                 <form className="question_form" onSubmit={this.handleSubmit}>
                     
-                    <NewQuestionTitle 
-                            displayTitle={this.state.displayTitle} 
+                    {this.state.displayTitle ? <NewQuestionTitle 
+                            displayTitle={(e) => this.toggleDisplay(e, "Title")} 
                             titleError={this.state.titleError}
 
                             setTitleRef={this.setTitleRef} 
                             handleTitle={this.handleTitle}
-                            displayDescription={this.displayDescription} />
+                            displayDescription={(e) => this.toggleDisplay(e, "Description")} /> : null }
 
                     {this.state.displayDescription ? 
 
@@ -193,140 +242,33 @@ class NewQuestion extends React.Component {
                                         "Blockquotes", "Code", "HTML"].map(type => <span className="guided_dropdown_link">{type}</span>)}
                                     
                                 </div>
-                                <div className={this.state.text1 ? "big_div2" : "big_div"}>
-                                <div className="dr1"
-                                        onClick={(e) => this.toggleDropDown(e, 1)}>1. Summarize the problem
-                                        
-                                        <span className="plus_minus">{this.state.dr1 ? <i className="fas fa-minus"></i> : <i className="fas fa-plus"></i>}</span>
-                                        
-                                        </div>
-                                {this.state.dr1 ? 
 
-                                <div>
-                                        <textarea value={this.state.body1}
-                                            className="dropdown_textarea"
-                                            onChange={(e) => this.handleSubBody(e, 1)} 
-                                            onFocus={(e)=> this.handleText(e, 1)}
-                                            onBlur={(e) => this.handleText(e, 1)}
-                                            autoFocus="autofocus"/> 
-
-                                            <div className="input_below_example">
-
-                                                <div className="header_detail">Include details about your goals and problem</div>
-
-                                            <ModeExample goodExample={this.state.goodExample1} badExample={this.state.badExample1}/>
-                                    
-
-                                            </div>
-                                </div>   
-                                : 
-                                null}
-                                </div>
-
-
-                                <div className={this.state.text2 ? "big_div2" : "big_div"}>
-                                <div className="dr2"
-                                    onClick={(e) => this.toggleDropDown(e, 2)}>2. Provide background including what you've already tried 
-                                        
-                                    <span className="plus_minus">{this.state.dr2 ? <i className="fas fa-minus"></i> : <i className="fas fa-plus"></i>}</span>
-                                    
-                                    </div>
-                                {this.state.dr2 ?
-
-                                    <div>
-                                        <textarea value={this.state.body2}
-                                            className="dropdown_textarea"
-                                            onChange={(e) => this.handleSubBody(e, 2)}
-                                            onFocus={(e) => this.handleText(e, 2)}
-                                            onBlur={(e) => this.handleText(e, 2)}
-                                            autoFocus="autofocus" />
-
-                                        <div className="input_below_example">
-
-                                            <div className="header_detail">Include any research you've conducted</div>
-
-
-                                            <ModeExample 
-                                                goodExample={this.state.goodExample2} 
-                                                badExample={this.state.badExample2} />
-                                        </div>
-                                    </div>
-                                    :
-                                    null}
-                                    </div>
-
-                                <div className={this.state.text3 ? "big_div2" : "big_div"}>
-                                <div className="dr3"
-                                    onClick={(e) => this.toggleDropDown(e, 3)}>3. Show some code
-                                        
-                                    <span className="plus_minus">{this.state.dr3 ? <i className="fas fa-minus"></i> : <i className="fas fa-plus"></i>}</span>
-                                    
-                                    </div>
-                                {this.state.dr3 ?
-
-                                    <div>
-                                        <textarea value={this.state.body3}
-                                            className="dropdown_textarea"
-                                            onChange={(e) => this.handleSubBody(e, 3)}
-                                            onFocus={(e) => this.handleText(e, 3)}
-                                            onBlur={(e) => this.handleText(e, 3)}
-                                            autoFocus="autofocus" />
-
-                                        <div className="input_below_example">
-
-                                            <div className="header_detail">Share the minimum amount of code others need to reproduce your problem (also called a minimal, reproducible example)</div>
-
-                                            <ModeExample 
-                                                goodExample={this.state.goodExample3} 
-                                                badExample={this.state.badExample3a} 
-                                                badExample2={this.state.badExample3b}/>
-
-                                        </div>
-                                    </div>
-                                    :
-                                    null}
-                                    </div>
-
-                                <div className={this.state.text4 ? "big_div2" : "big_div"}>
-                                <div className="dr4"
-                                    onClick={(e) => this.toggleDropDown(e, 4)}>4. Describe expected and actual results including any error messages
-                                        
-                                    <span className="plus_minus">{this.state.dr4 ? <i className="fas fa-minus"></i> : <i className="fas fa-plus"></i>}</span>
-                                    
-                                    </div>
-                                {this.state.dr4 ?
-
-                                    <div>
-                                        <textarea value={this.state.body4}
-                                            className="dropdown_textarea"
-                                            onChange={(e) => this.handleSubBody(e, 4)}
-                                            onFocus={(e) => this.handleText(e, 4)}
-                                            onBlur={(e) => this.handleText(e, 4)}
-                                            autoFocus="autofocus" />
-
-                                        <div className="input_below_example">
-
+                                {[1, 2, 3, 4].map(idx => (
+                                    <Dropdown
+                                        type={idx}
+                                        dr={this.state[`dr${idx}`]}
+                                        text={this.state[`text${idx}`]}
+                                        body={this.state[`body${idx}`]}
+                                        goodExamples={this.state.goodExamples[idx-1]}
+                                        badExamples={this.state.badExamples[idx-1]}
+                                        toggleDropDown={this.toggleDropDown}
+                                        handleText={this.handleText}
+                                        handleSubBody={this.handleSubBody}
+                                        header={this.state.headers[idx-1]}
+                                        headerDetail={this.state.subHeaders[idx-1]}
+                                    />
+                                ))}
                                 
-                                            <ModeExample
-                                                goodExample={this.state.goodExample4}
-                                                badExample={this.state.badExample4}/>
-
-                                        </div>
-                                    </div>
-                                    :
-                                    null}
-                                    </div>
-
                             </div>
                             
                             <div className="prev_next_buttons">
                                 <button className="prev_button"
-                                    onClick={(e) => this.displayTitle(e)}>
+                                    onClick={(e) => this.toggleDisplay(e, "Title")}>
                                     Previous
                                 </button>
 
                                 <button className="next_button"
-                                    onClick={(e) => this.displayReview(e)}>
+                                    onClick={(e) => this.toggleDisplay(e, "Review")}>
                                     Next
                                 </button>
                             </div>
@@ -388,37 +330,11 @@ class NewQuestion extends React.Component {
                         </label>}
                                     
                         <div className="review_form_before_submit">
-
-
-                            <span className="group_1">
-                                <span className="review_icon" 
-                                        onClick={(e) => this.handleBoldText(e)}>
-                                        <i className="fas fa-bold"></i>
-                                </span>
-                                <span className="review_icon"><i className="fas fa-italic"></i></span>
-                            </span>
-                                
-
-                            <span className="group_2">
-                                <span className="review_icon"><i className="fas fa-link"></i></span>
-                                <span className="review_icon"><i className="fas fa-quote-left"></i></span>
-                                <span className="review_icon"><i className="fas fa-code"></i></span>
-                                <span className="review_icon"><i className="far fa-image"></i></span>
-                                <span className="review_icon"><i className="far fa-file-code"></i></span>
-                            </span>
-
-                                
-                            <span className="group_3">
-                                <span className="review_icon"><i className="fas fa-list-ol"></i></span>
-                                <span className="review_icon"><i className="fas fa-list-ul"></i></span>
-                                <span className="review_icon"><i className="fas fa-stream"></i></span>
-                            </span>
-
-
-                            <span className="group_4">
-                                <span className="review_icon"><i className="fas fa-undo"></i></span>
-                                <span className="review_icon"><i className="fas fa-redo"></i></span>
-                            </span>
+                                {[0, 1, 2, 3].map((iconGroup, idx) => (
+                                    <span key={idx} className={`group_${idx + 1}`}>
+                                        {this.createIcons(this.state.textareaIcons[idx])}
+                                    </span>)
+                                )}
                         </div>
 
                             <div className="guided_mode_helpers">
@@ -445,27 +361,14 @@ class NewQuestion extends React.Component {
                         onChange={(e) => this.handleBody(e)}
                         spellCheck="value"/>}
 
-                            <hr style={{
-                                
-                                borderTop:"dotted 1px rgb(189, 196, 202)", 
-                                backgroundColor: 'transparent', 
-                                borderLeft: 'none', 
-                                borderRight: 'none', 
-                                borderBottom: 'none'}} />
+                            <hr className="hr" />
 
                             <div className="markdown_formatted_answer">
                                 {this.state.body}
                             </div>
                         
 
-                            <hr style={{
-                                marginTop: '2rem', 
-                                borderTop: "dotted 1px rgb(189, 196, 202)",
-                                backgroundColor: 'transparent',
-                                borderLeft: 'none',
-                                borderRight: 'none',
-                                borderBottom: 'none'
-                            }} />
+                            <hr className="hr" />
                      
                            <div className="prev_next_buttons">
                                 {this.state.bodyError || this.state.titleError ? 

@@ -1,23 +1,23 @@
 import React from 'react'; 
 
-const ModeExample = ({ goodExample, badExample, badExample2 }) => (
+const ModeExample = ({ goodExamples, badExamples }) => (
+
     <div className="separator_bottom">
-        <li>
-            <i className="fas fa-check carousel_check"></i>                                  
-            {goodExample} 
-        </li>
-        <li>
-            <i className="fas fa-times carousel_x"></i>
-            {badExample}
-        </li>
-        {
-        badExample2 && 
-        <li>
-            <i className="fas fa-times carousel_x"></i>
-            {badExample2}
-        </li>
-        }
+        {goodExamples.map(example => (
+            <li>
+                <i className="fas fa-check carousel_check"></i>
+                {example}
+            </li>
+        ))}
+        
+        {badExamples.map(example => (
+            <li>
+                <i className="fas fa-times carousel_x"></i>
+                {example}
+            </li>
+        ))}
     </div>
+    
 )
 
 export default ModeExample; 
