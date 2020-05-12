@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import Menu from './menu'; 
 
 import './navbar.css';
-import './hamburgers.css'
 
 
 class NavBar extends React.Component {

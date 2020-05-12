@@ -19,10 +19,7 @@ class NewQuestion extends React.Component {
             displayTitle: true, 
             displayDescription: false, 
             displayReview: false, 
-            dr1: false, 
-            dr2: false, 
-            dr3: false, 
-            dr4: false, 
+            dr: [false, false, false, false], 
             text1: false, 
             text2: false, 
             text3: false, 
@@ -65,7 +62,6 @@ class NewQuestion extends React.Component {
 
         this.setTitleRef = this.setTitleRef.bind(this);
         this.handleTitle = this.handleTitle.bind(this); 
-        this.displayDescription = this.displayDescription.bind(this); 
         
         this.toggleDropDown = this.toggleDropDown.bind(this); 
         this.handleSubBody = this.handleSubBody.bind(this); 
@@ -138,30 +134,6 @@ class NewQuestion extends React.Component {
         })
     }
 
-    displayTitle(e) {
-        this.setState({
-            displayTitle: true, 
-            displayDescription: false, 
-            displayReview: false 
-        })
-    }
-
-    displayDescription(e) {
-        this.setState({
-            displayTitle: false, 
-            displayDescription: true, 
-            displayReview: false 
-        })
-    }
-
-    displayReview(e) {
-        this.setState({
-            displayTitle: false, 
-            displayDescription: false, 
-            displayReview: true  
-        })
-    }
-
     toggleDisplay(e, type) {
         ['displayTitle', 'displayDescription', 'displayReview'].map(name => {
             if (name.includes(type)) {
@@ -177,9 +149,17 @@ class NewQuestion extends React.Component {
     }
 
     toggleDropDown(e, idx) {
+        console.log('toggleDropDown', idx); 
         this.setState({
-            [`dr${idx}`]: !this.state[`dr${idx}`]
+            dr: this.changeIdx(this.state.dr, idx-1)
         })
+        console.log(this.state.dr); 
+    }
+
+    changeIdx(arr, idx) {
+        console.log(idx); 
+        let boolean = arr[idx]; 
+        return arr.map((x, i) => i === idx ? !boolean : x); 
     }
 
     handleText(e, idx) {
@@ -188,18 +168,12 @@ class NewQuestion extends React.Component {
         })
     }
 
-
-    handleBoldText(e) {
-        this.setState({
-            body: this.state.body + "**strong text**"
-        })
-    }
-
     render() {
         return (
             <div className="new_question_page">
 
                 <div className="button_header">
+
 
                     <button className={this.state.displayTitle ? "button_carousel_selected" : "button_carousel"}
                         onClick={(e) => this.toggleDisplay(e, "Title")}>Title</button>
@@ -214,7 +188,8 @@ class NewQuestion extends React.Component {
 
                 <form className="question_form" onSubmit={this.handleSubmit}>
                     
-                    {this.state.displayTitle ? <NewQuestionTitle 
+                    {this.state.displayTitle ? 
+                            <NewQuestionTitle 
                             displayTitle={(e) => this.toggleDisplay(e, "Title")} 
                             titleError={this.state.titleError}
 
@@ -246,7 +221,7 @@ class NewQuestion extends React.Component {
                                 {[1, 2, 3, 4].map(idx => (
                                     <Dropdown
                                         type={idx}
-                                        dr={this.state[`dr${idx}`]}
+                                        dr={this.state.dr[idx]}
                                         text={this.state[`text${idx}`]}
                                         body={this.state[`body${idx}`]}
                                         goodExamples={this.state.goodExamples[idx-1]}
@@ -285,7 +260,7 @@ class NewQuestion extends React.Component {
                         <h1 className="carousel_header">Review your question</h1>
                         <h2 className="carousel_subheader">Almost there! Let’s give your question one more look. And don’t worry—you can edit your question after it’s posted, too.</h2>
 
-
+                
                             <div className="carousel_example_1">
                                 <div className="hypothetical">Check for typos, slang, and code formatting issues.</div>
                                 <div className="hypothetical_example">For example: </div>
@@ -305,29 +280,21 @@ class NewQuestion extends React.Component {
                                 <a href="https://stackoverflow.com/editing-help" style={{ marginLeft: '0.25rem'}}>these tips for editing with Markdown</a> for guidance. 
                             </div>
 
-                        {this.state.titleError ? 
-                        <label>
+
                             <div className="carousel_question_title">Title</div>
                             <input type="text"
                                 className="review_title title_input input_field_error"
-                                value={this.state.title} 
-                                onChange={(e) => this.handleTitle(e)}/>
-
-                            <div className="inline_errors">
-                                <div className="input_error_message">{this.state.titleError}</div>
-                                <i className="fas fa-exclamation-circle error_icon"></i>
+                                value={this.state.title}
+                                onChange={(e) => this.handleTitle(e)} />
+                        {this.state.titleError ? 
+                            <label>
+                                <div className="inline_errors">
+                                    <div className="input_error_message">{this.state.titleError}</div>
+                                    <i className="fas fa-exclamation-circle error_icon"></i>
                                 </div>
-                        </label>
+                            </label>
                         : 
-                        <label>
-                                <div className="carousel_question_title">Title</div>
-                                <input type="text"
-                                    className="review_title title_input"
-                                    value={this.state.title} 
-                                    onChange={(e) => this.handleTitle(e)}/>
-
-               
-                        </label>}
+                        null}
                                     
                         <div className="review_form_before_submit">
                                 {[0, 1, 2, 3].map((iconGroup, idx) => (

@@ -8,12 +8,12 @@ const DropDown = ({dr, text, toggleDropDown, body, handleSubBody,
         <div className={`dr${type}`} onClick={(e) => toggleDropDown(e, type)}>
             {header}
             <span className="plus_minus">
-                <i className={dr ? "fas fa-minus" : "fas fa-plus"}></i>
+                <i className={dr && dr[type-1] ? "fas fa-minus" : "fas fa-plus"}></i>
             </span>
                 
         </div>
 
-        {dr ? 
+        {dr && dr[type-1] ? 
         <div>
                 <textarea value={body}
                     className="dropdown_textarea"

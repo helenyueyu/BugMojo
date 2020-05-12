@@ -51,7 +51,6 @@ class NewQuestionTitle extends React.Component {
 
                                     <div className="inline_errors">
                                         <div className="input_error_message">{this.props.titleError}</div>
-                                        {/* <div className="input_error_message">{"banana"}</div> */}
 
                                         <i className="fas fa-exclamation-circle error_icon"></i>
                                     </div>

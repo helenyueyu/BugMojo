@@ -5,36 +5,7 @@ import { Link } from 'react-router-dom'
 class Menu extends React.Component {
     constructor(props) {
         super(props);
-        // this.state = {
-        //     menuOpen: this.props.menuOpen 
-        // }
-
-        // this.setMenuRef = this.setMenuRef.bind(this);
-
-        // this.handleClickOutsideMenu = this.handleClickOutsideMenu.bind(this);
     }
-
-    // setMenuRef(node) {
-    //     this.menuRef = node;
-    // }
-
-    // componentDidMount() {
-    //     document.addEventListener('mousedown', this.handleClickOutsideMenu);
-    // }
-
-    // componentWillUnmount() {
-    //     document.removeEventListener('mousedown', this.handleClickOutsideMenu); 
-    // }
-
-    // handleClickOutsideMenu(event) {
-    //     if (this.state.menuOpen) {
-    //         if (this.menuRef && !this.menuRef.contains(event.target)) {
-    //             this.setState({
-    //                 menuOpen: false
-    //             })
-    //         }
-    //     }
-    // }
 
     render() {
         return (
