@@ -1,5 +1,5 @@
 import React from 'react'; 
-import './splash.css'; 
+
 import { Link } from 'react-router-dom'; 
 
 const Splash = () => (
@@ -22,7 +22,9 @@ const Splash = () => (
             <h2>For developers, by developers</h2>
             <hr width="8%" />
             <p className="splash_description">
-                Stack Overflow is an <span className="community">open community</span> for anyone that codes. We help you get answers to your toughest coding questions, share knowledge with your coworkers in private, and find your next dream job.
+                Stack Overflow is an <span className="community">open community</span> 
+                for anyone that codes. We help you get answers to your toughest coding questions, 
+                share knowledge with your coworkers in private, and find your next dream job.
             </p>
         </div>
     </div>

@@ -17,5 +17,10 @@
 @import "base/colors.scss";
 @import "base/reset.scss";
 
+@import "components/footers/*"; 
+@import "components/navbar/*";
+@import "components/sign_in/*"; 
+@import "components/sign_up/*"; 
+@import "components/splash/*"; 
+@import "components/questions/*";
 
-@import "components/*";
