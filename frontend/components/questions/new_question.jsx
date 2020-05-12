@@ -83,8 +83,6 @@ class NewQuestion extends React.Component {
     handleSubmit(e) {
         e.preventDefault(); 
         const picked = (({title, body, author_id}) => ({title, body, author_id}))(this.state); 
-        console.log("picked", picked); 
-
         this.props.createQuestion(picked)
             .then(() => this.props.history.push(`/questions`))
     }
@@ -102,35 +100,11 @@ class NewQuestion extends React.Component {
         })
     }
 
-    handleBody1(e) {
+    handleSubBody(e, idx) {
         this.setState({
-            body1: e.target.value, 
-            body: this.state.body1 + this.state.body2 + this.state.body3 + this.state.body4, 
-            bodyError: this.state.body.length === 0 ? 'Body cannot be blank.' : '' 
-        })
-    }
-
-    handleBody2(e) {
-        this.setState({
-            body2: e.target.value,
-            body: this.state.body1 + this.state.body2 + this.state.body3 + this.state.body4, 
-            bodyError: this.state.body.length === 0 ? 'Body cannot be blank.' : '' 
-        })
-    }
-
-    handleBody3(e) {
-        this.setState({
-            body3: e.target.value,
-            body: this.state.body1 + this.state.body2 + this.state.body3 + this.state.body4, 
-            bodyError: this.state.body.length === 0 ? 'Body cannot be blank.' : '' 
-        })
-    }
-
-    handleBody4(e) {
-        this.setState({
-            body4: e.target.value,
-            body: this.state.body1 + this.state.body2 + this.state.body3 + this.state.body4, 
-            bodyError: this.state.body.length === 0 ? 'Body cannot be blank.' : '' 
+            [`body${idx}`]: e.target.value,
+            body: this.state.body1 + this.state.body2 + this.state.body3 + this.state.body4,
+            bodyError: this.state.body.length === 0 ? 'Body cannot be blank.' : ''
         })
     }
 
@@ -159,63 +133,17 @@ class NewQuestion extends React.Component {
     }
 
     toggleDropDown(e, idx) {
-        let variableKey = dr + `${idx}`; 
-
-        let {variableKey} = this.state; 
-
         this.setState({
-            [dr + `${idx}`]: !variableKey
+            [`dr${idx}`]: !this.state[`dr${idx}`]
         })
     }
 
-
-    toggleDropDown1(e) {
+    handleText(e, idx) {
         this.setState({
-            dr1: !this.state.dr1
+            [`text${idx}`]: !this.state[`text${idx}`]
         })
     }
 
-    toggleDropDown2(e) {
-        this.setState({
-            dr2: !this.state.dr2
-        })     
-    }
-
-    toggleDropDown3(e) {
-        this.setState({
-            dr3: !this.state.dr3
-        })
-    }
-
-    toggleDropDown4(e) {
-        this.setState({
-            dr4: !this.state.dr4
-        })
-    }
-
-    handleText1(e) {
-        this.setState({
-            text1: !this.state.text1 
-        })
-    }
-
-    handleText2(e) {
-        this.setState({
-            text2: !this.state.text2 
-        })
-    }
-
-    handleText3(e) {
-        this.setState({
-            text3: !this.state.text3 
-        })
-    }
-
-    handleText4(e) {
-        this.setState({
-            text4: !this.state.text4
-        })
-    }
 
     handleBoldText(e) {
         this.setState({
@@ -277,9 +205,9 @@ class NewQuestion extends React.Component {
                                 <div>
                                         <textarea value={this.state.body1}
                                             className="dropdown_textarea"
-                                            onChange={(e) => this.handleBody1(e)} 
-                                            onFocus={(e)=> this.handleText1(e)}
-                                            onBlur={(e) => this.handleText1(e)}
+                                            onChange={(e) => this.handleSubBody(e, 1)} 
+                                            onFocus={(e)=> this.handleText(e, 1)}
+                                            onBlur={(e) => this.handleText(e, 1)}
                                             autoFocus="autofocus"/> 
 
                                             <div className="input_below_example">
@@ -298,7 +226,7 @@ class NewQuestion extends React.Component {
 
                                 <div className={this.state.text2 ? "big_div2" : "big_div"}>
                                 <div className="dr2"
-                                    onClick={(e) => this.toggleDropDown2(e)}>2. Provide background including what you've already tried 
+                                    onClick={(e) => this.toggleDropDown(e, 2)}>2. Provide background including what you've already tried 
                                         
                                     <span className="plus_minus">{this.state.dr2 ? <i className="fas fa-minus"></i> : <i className="fas fa-plus"></i>}</span>
                                     
@@ -308,9 +236,9 @@ class NewQuestion extends React.Component {
                                     <div>
                                         <textarea value={this.state.body2}
                                             className="dropdown_textarea"
-                                            onChange={(e) => this.handleBody2(e)}
-                                            onFocus={(e) => this.handleText2(e)}
-                                            onBlur={(e) => this.handleText2(e)}
+                                            onChange={(e) => this.handleSubBody(e, 2)}
+                                            onFocus={(e) => this.handleText(e, 2)}
+                                            onBlur={(e) => this.handleText(e, 2)}
                                             autoFocus="autofocus" />
 
                                         <div className="input_below_example">
@@ -329,7 +257,7 @@ class NewQuestion extends React.Component {
 
                                 <div className={this.state.text3 ? "big_div2" : "big_div"}>
                                 <div className="dr3"
-                                    onClick={(e) => this.toggleDropDown3(e)}>3. Show some code
+                                    onClick={(e) => this.toggleDropDown(e, 3)}>3. Show some code
                                         
                                     <span className="plus_minus">{this.state.dr3 ? <i className="fas fa-minus"></i> : <i className="fas fa-plus"></i>}</span>
                                     
@@ -339,9 +267,9 @@ class NewQuestion extends React.Component {
                                     <div>
                                         <textarea value={this.state.body3}
                                             className="dropdown_textarea"
-                                            onChange={(e) => this.handleBody3(e)}
-                                            onFocus={(e) => this.handleText3(e)}
-                                            onBlur={(e) => this.handleText3(e)}
+                                            onChange={(e) => this.handleSubBody(e, 3)}
+                                            onFocus={(e) => this.handleText(e, 3)}
+                                            onBlur={(e) => this.handleText(e, 3)}
                                             autoFocus="autofocus" />
 
                                         <div className="input_below_example">
@@ -361,7 +289,7 @@ class NewQuestion extends React.Component {
 
                                 <div className={this.state.text4 ? "big_div2" : "big_div"}>
                                 <div className="dr4"
-                                    onClick={(e) => this.toggleDropDown4(e)}>4. Describe expected and actual results including any error messages
+                                    onClick={(e) => this.toggleDropDown(e, 4)}>4. Describe expected and actual results including any error messages
                                         
                                     <span className="plus_minus">{this.state.dr4 ? <i className="fas fa-minus"></i> : <i className="fas fa-plus"></i>}</span>
                                     
@@ -371,9 +299,9 @@ class NewQuestion extends React.Component {
                                     <div>
                                         <textarea value={this.state.body4}
                                             className="dropdown_textarea"
-                                            onChange={(e) => this.handleBody4(e)}
-                                            onFocus={(e) => this.handleText4(e)}
-                                            onBlur={(e) => this.handleText4(e)}
+                                            onChange={(e) => this.handleSubBody(e, 4)}
+                                            onFocus={(e) => this.handleText(e, 4)}
+                                            onBlur={(e) => this.handleText(e, 4)}
                                             autoFocus="autofocus" />
 
                                         <div className="input_below_example">
@@ -494,13 +422,9 @@ class NewQuestion extends React.Component {
                         </div>
 
                             <div className="guided_mode_helpers">
-                                <span className="guided_dropdown_link">Links</span>
-                                <span className="guided_dropdown_link">Images</span>
-                                <span className="guided_dropdown_link">Styling/Headers</span>
-                                <span className="guided_dropdown_link">Lists</span>
-                                <span className="guided_dropdown_link">Blockquotes</span>
-                                <span className="guided_dropdown_link">Code</span>
-                                <span className="guided_dropdown_link">HTML</span>
+                                {["Links", "Images", "Styling/Headers", "Lists",
+                                    "Blockquotes", "Code", "HTML"].map(type => <span className="guided_dropdown_link">{type}</span>)}
+                    
                             </div>
 
                         {this.state.bodyError ? 
