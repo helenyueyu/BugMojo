@@ -47,6 +47,6 @@
   },
   "homepage": "https://github.com/tokyosuite/BugMojo#readme",
   "devDependencies": {
-    "webpack-cli": "^3.3.5"
+    "webpack-cli": "^3.3.12"
   }
 }
